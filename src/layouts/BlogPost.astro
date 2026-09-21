@@ -1,0 +1,47 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
+  heroImage?: string;
+}
+
+const { title, description, pubDate, updatedDate, tags = [], heroImage } = Astro.props;
+const formattedDate = pubDate.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} | Yzaziy`} description={description}>
+  <article class="prose dark:prose-invert prose-zinc max-w-none">
+    <header class="mb-8 not-prose border-b border-zinc-200 dark:border-zinc-800 pb-6">
+      <time datetime={pubDate.toISOString()} class="text-sm text-zinc-500 dark:text-zinc-400">
+        {formattedDate}
+      </time>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mt-2">
+        {title}
+      </h1>
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {tags.map((tag) => (
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+    {heroImage && (
+      <img src={heroImage} alt={title} class="rounded-xl w-full object-cover mb-8 max-h-96" />
+    )}
+    <div class="mt-6">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

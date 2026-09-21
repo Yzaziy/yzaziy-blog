@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Yzaziy - 个人博客">
+  <section class="mb-12">
+    <h1 class="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
+      你好，我是 <span class="text-emerald-500">Yzaziy</span> 👋
+    </h1>
+    <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+      欢迎来到我的个人博客！在这里我会分享技术思考、个人开发记录以及有趣的知识。
+    </p>
+  </section>
+
+  <section>
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+        最新文章
+      </h2>
+    </div>
+    <div class="grid gap-6">
+      {posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          slug={post.slug}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
