@@ -1,0 +1,2 @@
+# yzaziy-blog
+my blog
