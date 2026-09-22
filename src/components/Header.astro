@@ -8,15 +8,26 @@ const navItems = [
 ---
 
 <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-zinc-200 dark:border-zinc-800">
-  <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center space-x-3 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-80 transition">
-      <img
-        src="/avatar.jpg"
-        alt="Yzaziy"
-        class="w-9 h-9 rounded-full object-cover"
-      />
-      <span>Yzaziy</span>
-    </a>
+  <div class="max-w-full mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <button
+        id="mobile-sidebar-toggle"
+        class="md:hidden p-1.5 -ml-1.5 rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+        aria-label="打开侧边栏"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <a href="/" class="flex items-center space-x-3 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-80 transition">
+        <img
+          src="/avatar.jpg"
+          alt="Yzaziy"
+          class="w-9 h-9 rounded-full object-cover"
+        />
+        <span>Yzaziy</span>
+      </a>
+    </div>
     <div class="flex items-center space-x-6">
       <nav class="flex items-center space-x-4">
         {navItems.map((item) => (

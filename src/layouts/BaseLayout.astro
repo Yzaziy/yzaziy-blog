@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -38,9 +39,53 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
-    <main class="flex-grow max-w-4xl mx-auto px-4 py-10 w-full">
-      <slot />
-    </main>
+    <div class="flex-grow flex w-full">
+      <!-- Desktop Sidebar -->
+      <div class="hidden md:block">
+        <Sidebar />
+      </div>
+      <!-- Mobile Sidebar Drawer -->
+      <div id="mobile-sidebar-drawer" class="fixed inset-0 z-50 hidden md:hidden">
+        <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
+        <div class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-zinc-950 shadow-xl flex flex-col z-10 border-r border-zinc-200 dark:border-zinc-800">
+          <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <span class="font-bold text-zinc-900 dark:text-zinc-100">分类导航</span>
+            <button id="close-mobile-sidebar" class="p-1 rounded-md text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="关闭侧边栏">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex-1 overflow-y-auto">
+            <Sidebar />
+          </div>
+        </div>
+      </div>
+      <!-- Main Content Area -->
+      <main class="flex-grow min-w-0 px-4 sm:px-10 py-10 max-w-4xl mx-auto w-full">
+        <slot />
+      </main>
+    </div>
     <Footer />
+
+    <script is:inline>
+      const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+      const drawer = document.getElementById('mobile-sidebar-drawer');
+      const closeBtn = document.getElementById('close-mobile-sidebar');
+      const backdrop = document.getElementById('mobile-sidebar-backdrop');
+
+      function openDrawer() {
+        drawer?.classList.remove('hidden');
+      }
+
+      function closeDrawer() {
+        drawer?.classList.add('hidden');
+      }
+
+      toggleBtn?.addEventListener('click', openDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
+      backdrop?.addEventListener('click', closeDrawer);
+    </script>
   </body>
 </html>
+

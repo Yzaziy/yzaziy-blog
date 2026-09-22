@@ -1,0 +1,106 @@
+---
+import { sidebarItems } from '../data/sidebar';
+---
+
+<aside id="sidebar-container" class="w-64 flex-shrink-0 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col transition-all duration-300">
+  <div class="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-4rem)] sticky top-16 select-none">
+    {sidebarItems.map((item) => (
+      item.children && item.children.length > 0 ? (
+        <details class="group [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 cursor-pointer transition-colors">
+            <div class="flex items-center space-x-3 min-w-0">
+              {item.icon === 'chip' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              )}
+              {item.icon === 'cube' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              )}
+              {item.icon === 'sparkles' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              )}
+              {item.icon === 'folder' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                </svg>
+              )}
+              {item.icon === 'gamepad' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12h.01M18 10h.01M6 12h4m-2-2v4m1-8h6a4 4 0 014 4v5a3 3 0 01-3 3h-1.5a2 2 0 00-1.414.586l-1.086 1.086a2 2 0 01-2.828 0l-1.086-1.086A2 2 0 008.5 19H7a3 3 0 01-3-3v-5a4 4 0 014-4z" />
+                </svg>
+              )}
+              {item.icon === 'monitor' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+              {item.icon === 'heart' && (
+                <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              )}
+              <span class="truncate">{item.title}</span>
+            </div>
+            <svg class="w-4 h-4 text-zinc-400 shrink-0 transition-transform duration-200 group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </summary>
+          <div class="mt-1 ml-4 pl-3 border-l border-zinc-200 dark:border-zinc-800 space-y-1 py-1">
+            {item.children.map((child) => (
+              child.children && child.children.length > 0 ? (
+                <details class="group/sub [&_summary::-webkit-details-marker]:hidden">
+                  <summary class="flex items-center justify-between w-full px-3 py-2 rounded-md text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 cursor-pointer">
+                    <span class="truncate">{child.title}</span>
+                    <svg class="w-3.5 h-3.5 text-zinc-400 shrink-0 transition-transform duration-200 group-open/sub:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </summary>
+                  <div class="mt-1 ml-3 pl-2.5 border-l border-zinc-200 dark:border-zinc-800 space-y-1 py-1">
+                    {child.children.map((subChild) => (
+                      <a
+                        href={subChild.href || '#'}
+                        class="block px-2.5 py-1.5 rounded-md text-xs text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/40 transition-colors truncate"
+                      >
+                        {subChild.title}
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <a
+                  href={child.href || '#'}
+                  class="block px-3 py-2 rounded-md text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors truncate"
+                >
+                  {child.title}
+                </a>
+              )
+            ))}
+          </div>
+        </details>
+      ) : (
+        <a
+          href={item.href || '#'}
+          class="flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors"
+        >
+          <div class="flex items-center space-x-3 min-w-0">
+            {item.icon === 'heart' && (
+              <svg class="w-5 h-5 text-zinc-500 dark:text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            )}
+            <span class="truncate">{item.title}</span>
+          </div>
+          <svg class="w-4 h-4 text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      )
+    ))}
+  </div>
+</aside>
+
