@@ -3,7 +3,7 @@ import { sidebarItems } from '../data/sidebar';
 ---
 
 <aside id="sidebar-container" class="w-72 flex-shrink-0 border-r border-zinc-200/70 dark:border-zinc-800/70 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-md flex flex-col transition-all duration-300">
-  <div class="p-4 space-y-1.5 overflow-y-auto max-h-[calc(100vh-4rem)] sticky top-16 select-none">
+  <div class="p-4 space-y-1.5 select-none">
     {sidebarItems.map((item) => (
       item.children && item.children.length > 0 ? (
         <details class="group [&_summary::-webkit-details-marker]:hidden" open={item.id === 'embedded'}>
