@@ -15,6 +15,30 @@
   }
 }
 
+/* 侧边栏专属定制滑动条：位于右侧边缘（箭头所指处），清晰可见、支持鼠标拖拽与滑轮滚动 */
+.sidebar-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.55) rgba(156, 163, 175, 0.1);
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: rgba(156, 163, 175, 0.08);
+  border-radius: 9999px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+.sidebar-scroll:hover::-webkit-scrollbar-thumb,
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.85);
+}
+
 /* 彻底禁止浏览器原生的淡入淡出透明度过渡，消除切换瞬间露出的底层白光 */
 ::view-transition-old(root),
 ::view-transition-new(root) {

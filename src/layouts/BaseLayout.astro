@@ -81,9 +81,9 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
 
     <!-- 页面主体内容（居于最上层） -->
     <div class="flex-grow flex w-full relative z-10 items-start">
-      <!-- 桌面端侧边栏（self-start + sticky top-16 确保随页面滚屏始终吸顶浮动跟随在左侧） -->
+      <!-- 桌面端侧边栏（始终吸附顶端 sticky top-16，高度与视口契合 h-[calc(100vh-4rem)]，内置滑动条） -->
       <div
-        class="hidden md:block w-72 flex-shrink-0 self-start sticky top-16 z-30"
+        class="hidden md:block w-72 flex-shrink-0 sticky top-16 h-[calc(100vh-4rem)] z-30 self-start"
         transition:persist="sidebar-desktop"
       >
         <Sidebar />
@@ -101,7 +101,7 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
               </svg>
             </button>
           </div>
-          <div class="flex-1 overflow-y-auto">
+          <div class="flex-1 overflow-y-auto sidebar-scroll">
             <Sidebar />
           </div>
         </div>

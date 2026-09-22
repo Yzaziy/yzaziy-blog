@@ -2,8 +2,9 @@
 import { sidebarItems } from '../data/sidebar';
 ---
 
-<aside id="sidebar-container" class="w-72 flex-shrink-0 border-r border-zinc-200/70 dark:border-zinc-800/70 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-md flex flex-col transition-all duration-300 max-h-[calc(100vh-4rem)] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-  <div class="p-4 space-y-1.5 select-none">
+<aside id="sidebar-container" class="w-72 h-[calc(100vh-4rem)] flex-shrink-0 border-r border-zinc-200/70 dark:border-zinc-800/70 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-md flex flex-col transition-all duration-300">
+  <!-- 侧边栏独立滑动区域（配有精致原生定制滑动条，支持拖动与滑轮滚动） -->
+  <div class="sidebar-scroll flex-1 p-4 space-y-1.5 select-none">
     {sidebarItems.map((item) => (
       item.children && item.children.length > 0 ? (
         <details class="group [&_summary::-webkit-details-marker]:hidden" open={item.id === 'embedded'}>
