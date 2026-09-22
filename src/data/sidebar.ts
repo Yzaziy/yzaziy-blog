@@ -21,7 +21,14 @@ export const sidebarItems: MenuItem[] = [
           { id: 'rookie-pc-setup', title: '电脑选购与必备工具', href: '/embedded/rookie' }
         ]
       },
-      { id: 'rank-bronze', title: '青铜', href: '#', badge: '/ranks/bronze.png' },
+      {
+        id: 'rank-bronze',
+        title: '青铜',
+        badge: '/ranks/bronze.png',
+        children: [
+          { id: 'bronze-c-lang', title: 'C语言基础与编译器', href: '/embedded/bronze' }
+        ]
+      },
       { id: 'rank-silver', title: '白银', href: '#', badge: '/ranks/silver.png' },
       { id: 'rank-gold', title: '黄金', href: '#', badge: '/ranks/gold.png' },
       { id: 'rank-platinum', title: '白金', href: '#', badge: '/ranks/platinum.png' },

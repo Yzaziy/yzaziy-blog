@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="【青铜篇】C语言核心基础与编译器选型 | 嵌入式入门"
+  description="嵌入式入门第二站：从零搞懂C语言要学到什么程度、4款常用编译器真实测评与高性价比学习路线。"
+>
+  <article class="max-w-3xl mx-auto space-y-12">
+    <!-- 面包屑导航 -->
+    <nav class="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
+      <span>/</span>
+      <span>嵌入式入门</span>
+      <span>/</span>
+      <span class="text-amber-700 dark:text-amber-500 font-medium">青铜篇</span>
+      <span>/</span>
+      <span class="text-zinc-800 dark:text-zinc-200">C语言与开发工具</span>
+    </nav>
+
+    <!-- 头部信息 -->
+    <header class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-600/10 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-4 border border-amber-600/20">
+        <img src="/ranks/bronze.png" alt="青铜" class="w-4 h-4 object-contain" />
+        <span>阶段 02 · 青铜进阶</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
+        【青铜篇】C语言核心基础与编译器选型
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        C语言是嵌入式的绝对基石，绝大部分单片机底层固件都是用C写出来的。很多同学一听说学C就头大，但别慌——搞嵌入式<strong>不需要你把C语言深挖到底层编译原理</strong>，基本上掌握到<strong>指针基础</strong>，就能昂首挺胸跨进嵌入式的大门了！
+      </p>
+
+      <!-- 对应原位置动图 1 -->
+      <div class="flex justify-center my-6">
+        <div class="rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/50 shadow-sm max-w-xs">
+          <img src="/embedded/bronze/image1.GIF" alt="学C语言别慌" class="w-full h-auto object-contain" />
+        </div>
+      </div>
+    </header>
+
+    <!-- 第一部分：编译器大比拼 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第一部分：常用C语言编译器真实测评
+        </h2>
+      </div>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">
+        写代码得有顺手的兵刃，下面给初学者客观扒一扒目前市面上最常见的 4 种工具：
+      </p>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <!-- Dev-C++ -->
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <img src="/embedded/bronze/image2.png" alt="Dev-C++" class="w-8 h-8 object-contain rounded" />
+              <div>
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">DEV C++</h3>
+                <span class="text-[11px] text-zinc-400">复古老牌 · 纯粹极简</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              古董级老兵，最大的长处是体积小、环境极其稳定，装上就能跑，很多高校大一上机都用它。缺点是界面确实太古老，毫无现代编辑器体验，需要耐下心适应。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-xs text-zinc-500">
+            适合：老机器应急、只想纯粹验证简单语法算法的人。
+          </div>
+        </div>
+
+        <!-- CLion -->
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <img src="/embedded/bronze/image3.png" alt="CLion" class="w-8 h-8 object-contain rounded" />
+              <div>
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">CLion</h3>
+                <span class="text-[11px] text-purple-600 dark:text-purple-400 font-medium">JetBrains 家族 · 现代颜值派</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              当下主流C/C++现代IDE代表，UI华丽，代码智能补全和重构无敌，还能接入AI插件。但它更针对软件工程与跨平台大项目，对国内传统的单片机生态并不是最顺手的。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-xs text-zinc-500">
+            适合：软工专业同学、对编码美观与智能提示有执念的人。
+          </div>
+        </div>
+
+        <!-- Visual Studio (首推) -->
+        <div class="p-5 rounded-2xl border-2 border-amber-500/50 dark:border-amber-500/40 bg-amber-50/20 dark:bg-amber-950/20 backdrop-blur-sm shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 px-3 py-1 bg-amber-500 text-white text-[10px] font-bold rounded-bl-xl">
+            新手首推
+          </div>
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <img src="/embedded/bronze/image4.png" alt="Visual Studio" class="w-8 h-8 object-contain rounded" />
+              <div>
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Visual Studio（宇宙第一IDE）</h3>
+                <span class="text-[11px] text-amber-700 dark:text-amber-400 font-semibold">新手最稳推荐</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              开箱即用，装完直接开工，完全不需要新手去折腾令人头秃的环境变量与编译器路径。最关键的是，它和我们后续嵌入式要用的专业IDE（如 Keil、IAR）设计逻辑相通，而且全网初学者教程基本都以此为主，上手最顺畅！
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 font-medium">
+            强烈建议：新手第一选，直接去官网或应用商店装免费的 Community 社区版。
+          </div>
+        </div>
+
+        <!-- VS Code -->
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-3">
+              <img src="/embedded/bronze/image5.png" alt="VS Code" class="w-8 h-8 object-contain rounded" />
+              <div>
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">VS Code</h3>
+                <span class="text-[11px] text-blue-600 dark:text-blue-400 font-medium">轻量编辑器 · 嵌入式终极形态</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              很多人分不清它和 Visual Studio。它本身<strong>只是个文本编辑器</strong>，不能直接编译C语言，得自己配插件、配编译器（MinGW）、写 launch.json。虽然它是嵌入式高手的终极标配，但<strong>对新手极不友好</strong>，一旦配置报错能卡你一整天，建议后期熟练了再折腾。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-xs text-zinc-500">
+            建议：大一初学者先别碰环境配置，先用 Visual Studio 把C语言本体学会。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第二部分：学习路线与教程 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第二部分：学习资源与实战建议
+        </h2>
+      </div>
+
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
+        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
+          📺 推荐课程：B站【鹏哥C语言】
+        </h3>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          B站上的C语言教程很多，但我最推荐跟着<strong>鹏哥C语言</strong>来学。原因很简单：教学用具直接采用上面推荐的 Visual Studio，讲课细致，课后有代码练习，初学者完全不用担心跟不上。
+        </p>
+
+        <!-- 课程外链卡片 -->
+        <a
+          href="https://www.bilibili.com/video/BV1cq4y1U7ug/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-4 rounded-xl bg-pink-50/40 dark:bg-pink-950/20 border border-pink-200/60 dark:border-pink-900/40 hover:bg-pink-100/50 transition group"
+        >
+          <div class="flex items-center space-x-3 min-w-0">
+            <span class="text-2xl">📺</span>
+            <div class="min-w-0">
+              <div class="font-bold text-sm text-zinc-900 dark:text-zinc-100 truncate">
+                【鹏哥C语言】从入门到进阶 完整版视频教程
+              </div>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                B站现象级零基础C语言入门神课，点击直达观看 ↗
+              </p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-pink-500 text-white font-medium shrink-0 ml-3 group-hover:scale-105 transition">
+            前往学习
+          </span>
+        </a>
+
+        <!-- 200集吓哭动图 -->
+        <div class="pt-4 border-t border-zinc-200/60 dark:border-zinc-800/60 flex flex-col items-center">
+          <p class="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 text-center">
+            打开一看是不是吓哭了？整整 200 集！不要慌，嵌入式其实只需要学到 <span class="text-amber-600 dark:text-amber-400 font-bold text-base">第 127 集左右</span> 搞懂指针就行了！
+          </p>
+          <div class="rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/50 shadow-sm max-w-xs">
+            <img src="/embedded/bronze/image6.GIF" alt="吓哭动图" class="w-full h-auto object-contain" />
+          </div>
+          <p class="text-xs text-zinc-400 mt-3 italic">
+            (╯°口°)╯︵ ┻━┻ 没办法，学技术任重而道远，耐住性子冲就完事了！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第三部分：三阶段极简目标 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第三部分：青铜篇核心过关标准
+        </h2>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-start space-x-3 p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40">
+          <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300 shrink-0">第 1 阶段</span>
+          <div class="text-xs text-zinc-600 dark:text-zinc-300">
+            <strong class="text-zinc-900 dark:text-zinc-100 text-sm block mb-1">控制流程与循环语句</strong>
+            熟练掌握 <code>for</code>、<code>while</code>、<code>if-else</code>、<code>switch-case</code>，搞懂程序的基本逻辑流。
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40">
+          <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300 shrink-0">第 2 阶段</span>
+          <div class="text-xs text-zinc-600 dark:text-zinc-300">
+            <strong class="text-zinc-900 dark:text-zinc-100 text-sm block mb-1">数组与模块化函数</strong>
+            能够拆分逻辑写函数，能够独立完成类似“三子棋”、“石头剪刀布”这样的小终端程序。
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-4 rounded-xl border-2 border-amber-500/40 bg-amber-50/20 dark:bg-amber-950/20">
+          <span class="px-2.5 py-1 rounded-md bg-amber-500 text-white text-xs font-bold shrink-0">第 3 阶段</span>
+          <div class="text-xs text-zinc-700 dark:text-zinc-300">
+            <strong class="text-amber-800 dark:text-amber-300 text-sm block mb-1">指针与内存基础（核心分水岭）</strong>
+            搞懂内存地址、指针变量、指针传参，掌握到这里，恭喜你——你已经有资格跨进真正的单片机实操大门了！
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 尾声进阶与动图 -->
+    <section class="border-t border-zinc-200/80 dark:border-zinc-800/80 pt-8 text-center space-y-6">
+      <div>
+        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
+          完成以上三阶段，即可昂首迈入【白银阶段】！
+        </h3>
+        <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          白银篇，我们将正式拿起单片机与元器件，开启真正的软硬件交互。
+        </p>
+      </div>
+
+      <!-- 原文档对应尾部动图 -->
+      <div class="flex justify-center my-4">
+        <div class="rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/50 shadow-sm max-w-xs">
+          <img src="/embedded/bronze/image7.GIF" alt="白银进阶" class="w-full h-auto object-contain" />
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
