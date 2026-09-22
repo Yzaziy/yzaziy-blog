@@ -4,14 +4,16 @@ interface Props {
   description?: string;
   pubDate: Date;
   slug: string;
+  href?: string;
 }
 
-const { title, description, pubDate, slug } = Astro.props;
+const { title, description, pubDate, slug, href } = Astro.props;
 const formattedDate = pubDate.toLocaleDateString('zh-CN', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
+const linkUrl = href || `/blog/${slug}`;
 ---
 
 <article class="group relative flex flex-col items-start p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition bg-zinc-50/50 dark:bg-zinc-900/50">
@@ -19,7 +21,7 @@ const formattedDate = pubDate.toLocaleDateString('zh-CN', {
     {formattedDate}
   </time>
   <h2 class="mt-2 text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-    <a href={`/blog/${slug}`}>
+    <a href={linkUrl}>
       <span class="absolute -inset-y-px -inset-x-4 sm:-inset-x-6 sm:rounded-2xl"></span>
       {title}
     </a>
@@ -36,3 +38,4 @@ const formattedDate = pubDate.toLocaleDateString('zh-CN', {
     </svg>
   </div>
 </article>
+
