@@ -3,8 +3,24 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors duration-200 antialiased;
+  html {
+    color-scheme: light;
   }
+  html.dark {
+    color-scheme: dark;
+    background-color: #09090b;
+  }
+  body {
+    @apply bg-transparent text-zinc-900 dark:text-zinc-100 antialiased;
+  }
+}
+
+/* 彻底禁止浏览器原生的淡入淡出透明度过渡，消除切换瞬间露出的底层白光 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
+}
+::view-transition {
+  background-color: transparent !important;
 }
 
