@@ -41,13 +41,13 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <Header />
     <div class="flex-grow flex w-full">
       <!-- Desktop Sidebar -->
-      <div class="hidden md:block">
+      <div class="hidden md:block w-72 flex-shrink-0">
         <Sidebar />
       </div>
       <!-- Mobile Sidebar Drawer -->
       <div id="mobile-sidebar-drawer" class="fixed inset-0 z-50 hidden md:hidden">
         <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
-        <div class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-zinc-950 shadow-xl flex flex-col z-10 border-r border-zinc-200 dark:border-zinc-800">
+        <div class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-zinc-950 shadow-xl flex flex-col z-10 border-r border-zinc-200 dark:border-zinc-800">
           <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
             <span class="font-bold text-zinc-900 dark:text-zinc-100">分类导航</span>
             <button id="close-mobile-sidebar" class="p-1 rounded-md text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="关闭侧边栏">

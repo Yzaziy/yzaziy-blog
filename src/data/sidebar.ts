@@ -12,8 +12,14 @@ export const sidebarItems: MenuItem[] = [
     title: '嵌入式入门',
     icon: 'chip',
     children: [
-      { id: 'embedded-c', title: 'C语言进阶', href: '#' },
-      { id: 'embedded-arm', title: 'ARM架构基础', href: '#' },
+      { id: 'rank-rookie', title: '菜鸟', href: '#' },
+      { id: 'rank-bronze', title: '青铜', href: '#' },
+      { id: 'rank-silver', title: '白银', href: '#' },
+      { id: 'rank-gold', title: '黄金', href: '#' },
+      { id: 'rank-platinum', title: '白金', href: '#' },
+      { id: 'rank-diamond', title: '钻石', href: '#' },
+      { id: 'rank-master', title: '大师', href: '#' },
+      { id: 'rank-predator', title: '猎杀', href: '#' },
     ]
   },
   {
