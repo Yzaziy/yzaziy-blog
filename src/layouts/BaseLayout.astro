@@ -79,42 +79,43 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <!-- 顶部导航 -->
     <Header />
 
-    <!-- 页面主体内容（居于最上层） -->
-    <div class="flex-grow flex w-full relative z-10 items-start">
-      <!-- 桌面端侧边栏（始终吸附顶端 sticky top-16，高度与视口契合 h-[calc(100vh-4rem)]，内置滑动条） -->
-      <div
-        class="hidden md:block w-72 flex-shrink-0 sticky top-16 h-[calc(100vh-4rem)] z-30 self-start"
-        transition:persist="sidebar-desktop"
-      >
-        <Sidebar />
-      </div>
+    <!-- 桌面端侧边栏（采用 fixed 彻底永远钉死在视口左侧 top-16，无论滑到多底、是否触及 footer，绝不动摇丝毫） -->
+    <aside
+      id="sidebar-desktop-container"
+      class="hidden md:flex fixed top-16 left-0 bottom-0 w-72 z-30 flex-col border-r border-zinc-200/70 dark:border-zinc-800/70 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-md transition-all"
+      transition:persist="sidebar-desktop"
+    >
+      <Sidebar />
+    </aside>
 
-      <!-- 移动端侧边抽屉 -->
-      <div id="mobile-sidebar-drawer" class="fixed inset-0 z-50 hidden md:hidden">
-        <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
-        <div class="fixed inset-y-0 left-0 w-72 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-xl flex flex-col z-10 border-r border-zinc-200/80 dark:border-zinc-800/80">
-          <div class="p-4 border-b border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
-            <span class="font-bold text-zinc-900 dark:text-zinc-100">分类导航</span>
-            <button id="close-mobile-sidebar" class="p-1 rounded-md text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="关闭侧边栏">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div class="flex-1 overflow-y-auto sidebar-scroll">
-            <Sidebar />
-          </div>
+    <!-- 移动端侧边抽屉 -->
+    <div id="mobile-sidebar-drawer" class="fixed inset-0 z-50 hidden md:hidden">
+      <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
+      <div class="fixed inset-y-0 left-0 w-72 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-xl flex flex-col z-10 border-r border-zinc-200/80 dark:border-zinc-800/80">
+        <div class="p-4 border-b border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
+          <span class="font-bold text-zinc-900 dark:text-zinc-100">分类导航</span>
+          <button id="close-mobile-sidebar" class="p-1 rounded-md text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="关闭侧边栏">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-1 overflow-y-auto sidebar-scroll">
+          <Sidebar />
         </div>
       </div>
+    </div>
 
+    <!-- 页面滚动主视图（md:pl-72 为左侧固定侧边栏提供稳定专属空间） -->
+    <div class="flex-grow flex flex-col w-full md:pl-72 relative z-10">
       <!-- 主内容区域（确保所有内容与交互均在最上层） -->
       <main class="flex-grow min-w-0 px-4 sm:px-10 py-10 max-w-4xl mx-auto w-full relative z-10">
         <slot />
       </main>
-    </div>
 
-    <!-- 底部信息 -->
-    <Footer />
+      <!-- 底部信息 -->
+      <Footer />
+    </div>
 
     <script is:inline>
       function initAppInteractions() {
