@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -20,6 +21,8 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <!-- Astro 客户端路由（实现页面无刷新切换、背景持续连贯加载） -->
+    <ClientRouter />
     <script is:inline>
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -38,9 +41,14 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     </script>
   </head>
   <body class="flex flex-col min-h-screen relative text-zinc-900 dark:text-zinc-100 antialiased">
-    <!-- 全局动态视频背景（稍微模糊处理 + 保护文字可读性） -->
-    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none select-none">
+    <!-- 全局持久化动态背景视频（transition:persist 实现切页不间断、不闪烁、不重新加载） -->
+    <div
+      id="bg-video-wrapper"
+      transition:persist
+      class="fixed inset-0 -z-50 overflow-hidden pointer-events-none select-none"
+    >
       <video
+        id="bg-video"
         autoplay
         loop
         muted
@@ -59,8 +67,8 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
 
     <!-- 页面主体内容（居于最上层） -->
     <div class="flex-grow flex w-full relative z-10">
-      <!-- 桌面端侧边栏 -->
-      <div class="hidden md:block w-72 flex-shrink-0">
+      <!-- 桌面端侧边栏（transition:persist 保持展开折叠状态不重置） -->
+      <div class="hidden md:block w-72 flex-shrink-0" transition:persist="sidebar-desktop">
         <Sidebar />
       </div>
 
@@ -92,22 +100,25 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <Footer />
 
     <script is:inline>
-      const toggleBtn = document.getElementById('mobile-sidebar-toggle');
-      const drawer = document.getElementById('mobile-sidebar-drawer');
-      const closeBtn = document.getElementById('close-mobile-sidebar');
-      const backdrop = document.getElementById('mobile-sidebar-backdrop');
+      function initAppInteractions() {
+        const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+        const drawer = document.getElementById('mobile-sidebar-drawer');
+        const closeBtn = document.getElementById('close-mobile-sidebar');
+        const backdrop = document.getElementById('mobile-sidebar-backdrop');
 
-      function openDrawer() {
-        drawer?.classList.remove('hidden');
+        toggleBtn?.addEventListener('click', () => drawer?.classList.remove('hidden'));
+        closeBtn?.addEventListener('click', () => drawer?.classList.add('hidden'));
+        backdrop?.addEventListener('click', () => drawer?.classList.add('hidden'));
+
+        // 确保持久化视频始终处于播放状态
+        const video = document.getElementById('bg-video');
+        if (video && video.paused) {
+          video.play().catch(() => {});
+        }
       }
 
-      function closeDrawer() {
-        drawer?.classList.add('hidden');
-      }
-
-      toggleBtn?.addEventListener('click', openDrawer);
-      closeBtn?.addEventListener('click', closeDrawer);
-      backdrop?.addEventListener('click', closeDrawer);
+      initAppInteractions();
+      document.addEventListener('astro:page-load', initAppInteractions);
     </script>
   </body>
 </html>
