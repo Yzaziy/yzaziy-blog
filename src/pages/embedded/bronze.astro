@@ -48,19 +48,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </h2>
       </div>
       <p class="text-sm text-zinc-600 dark:text-zinc-400">
-        写代码得有顺手的兵刃，下面给初学者客观扒一扒目前市面上最常见的 4 种工具：
+        写代码得有顺手的兵刃，下面给初学者客观扒一扒目前市面上最常见的 4 种工具（均附官方下载链接）：
       </p>
 
       <div class="grid gap-5 sm:grid-cols-2">
         <!-- Dev-C++ -->
-        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition">
           <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <img src="/embedded/bronze/image2.png" alt="Dev-C++" class="w-8 h-8 object-contain rounded" />
-              <div>
-                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">DEV C++</h3>
-                <span class="text-[11px] text-zinc-400">复古老牌 · 纯粹极简</span>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center space-x-3">
+                <img src="/embedded/bronze/image2.png" alt="Dev-C++" class="w-8 h-8 object-contain rounded" />
+                <div>
+                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">DEV C++</h3>
+                  <span class="text-[11px] text-zinc-400">复古老牌 · 纯粹极简</span>
+                </div>
               </div>
+              <a
+                href="https://devc.biancheng.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition shrink-0"
+              >
+                官网 ↗
+              </a>
             </div>
             <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
               古董级老兵，最大的长处是体积小、环境极其稳定，装上就能跑，很多高校大一上机都用它。缺点是界面确实太古老，毫无现代编辑器体验，需要耐下心适应。
@@ -72,14 +82,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
 
         <!-- CLion -->
-        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition">
           <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <img src="/embedded/bronze/image3.png" alt="CLion" class="w-8 h-8 object-contain rounded" />
-              <div>
-                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">CLion</h3>
-                <span class="text-[11px] text-purple-600 dark:text-purple-400 font-medium">JetBrains 家族 · 现代颜值派</span>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center space-x-3">
+                <img src="/embedded/bronze/image3.png" alt="CLion" class="w-8 h-8 object-contain rounded" />
+                <div>
+                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">CLion</h3>
+                  <span class="text-[11px] text-purple-600 dark:text-purple-400 font-medium">JetBrains 家族 · 现代颜值派</span>
+                </div>
               </div>
+              <a
+                href="https://www.jetbrains.com/clion/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-2.5 py-1 rounded-lg bg-purple-100/80 dark:bg-purple-950/60 hover:bg-purple-200 dark:hover:bg-purple-900/60 text-xs font-medium text-purple-700 dark:text-purple-300 transition shrink-0"
+              >
+                官网 ↗
+              </a>
             </div>
             <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
               当下主流C/C++现代IDE代表，UI华丽，代码智能补全和重构无敌，还能接入AI插件。但它更针对软件工程与跨平台大项目，对国内传统的单片机生态并不是最顺手的。
@@ -96,31 +116,51 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             新手首推
           </div>
           <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <img src="/embedded/bronze/image4.png" alt="Visual Studio" class="w-8 h-8 object-contain rounded" />
-              <div>
-                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Visual Studio（宇宙第一IDE）</h3>
-                <span class="text-[11px] text-amber-700 dark:text-amber-400 font-semibold">新手最稳推荐</span>
+            <div class="flex items-center justify-between mb-3 pr-16">
+              <div class="flex items-center space-x-3">
+                <img src="/embedded/bronze/image4.png" alt="Visual Studio" class="w-8 h-8 object-contain rounded" />
+                <div>
+                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Visual Studio</h3>
+                  <span class="text-[11px] text-amber-700 dark:text-amber-400 font-semibold">宇宙第一IDE · 新手最稳</span>
+                </div>
               </div>
             </div>
             <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
               开箱即用，装完直接开工，完全不需要新手去折腾令人头秃的环境变量与编译器路径。最关键的是，它和我们后续嵌入式要用的专业IDE（如 Keil、IAR）设计逻辑相通，而且全网初学者教程基本都以此为主，上手最顺畅！
             </p>
           </div>
-          <div class="mt-4 pt-3 border-t border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 font-medium">
-            强烈建议：新手第一选，直接去官网或应用商店装免费的 Community 社区版。
+          <div class="mt-4 pt-3 border-t border-amber-500/20 flex items-center justify-between">
+            <span class="text-xs text-amber-800 dark:text-amber-300 font-medium">推荐装免费 Community 社区版</span>
+            <a
+              href="https://visualstudio.microsoft.com/zh-hans/vs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold transition shrink-0"
+            >
+              官网下载 ↗
+            </a>
           </div>
         </div>
 
         <!-- VS Code -->
-        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between">
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition">
           <div>
-            <div class="flex items-center space-x-3 mb-3">
-              <img src="/embedded/bronze/image5.png" alt="VS Code" class="w-8 h-8 object-contain rounded" />
-              <div>
-                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">VS Code</h3>
-                <span class="text-[11px] text-blue-600 dark:text-blue-400 font-medium">轻量编辑器 · 嵌入式终极形态</span>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center space-x-3">
+                <img src="/embedded/bronze/image5.png" alt="VS Code" class="w-8 h-8 object-contain rounded" />
+                <div>
+                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">VS Code</h3>
+                  <span class="text-[11px] text-blue-600 dark:text-blue-400 font-medium">轻量编辑器 · 嵌入式终极形态</span>
+                </div>
               </div>
+              <a
+                href="https://code.visualstudio.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-2.5 py-1 rounded-lg bg-blue-100/80 dark:bg-blue-950/60 hover:bg-blue-200 dark:hover:bg-blue-900/60 text-xs font-medium text-blue-700 dark:text-blue-300 transition shrink-0"
+              >
+                官网 ↗
+              </a>
             </div>
             <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
               很多人分不清它和 Visual Studio。它本身<strong>只是个文本编辑器</strong>，不能直接编译C语言，得自己配插件、配编译器（MinGW）、写 launch.json。虽然它是嵌入式高手的终极标配，但<strong>对新手极不友好</strong>，一旦配置报错能卡你一整天，建议后期熟练了再折腾。
@@ -152,7 +192,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
         <!-- 课程外链卡片 -->
         <a
-          href="https://www.bilibili.com/video/BV1cq4y1U7ug/"
+          href="https://www.bilibili.com/video/BV17a7K64ELH/"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-between p-4 rounded-xl bg-pink-50/40 dark:bg-pink-950/20 border border-pink-200/60 dark:border-pink-900/40 hover:bg-pink-100/50 transition group"
