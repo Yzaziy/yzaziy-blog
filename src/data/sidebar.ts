@@ -13,7 +13,14 @@ export const sidebarItems: MenuItem[] = [
     title: '嵌入式入门',
     icon: 'chip',
     children: [
-      { id: 'rank-rookie', title: '菜鸟', href: '#', badge: '/ranks/rookie.png' },
+      {
+        id: 'rank-rookie',
+        title: '菜鸟',
+        badge: '/ranks/rookie.png',
+        children: [
+          { id: 'rookie-pc-setup', title: '电脑选购与必备工具', href: '/embedded/rookie' }
+        ]
+      },
       { id: 'rank-bronze', title: '青铜', href: '#', badge: '/ranks/bronze.png' },
       { id: 'rank-silver', title: '白银', href: '#', badge: '/ranks/silver.png' },
       { id: 'rank-gold', title: '黄金', href: '#', badge: '/ranks/gold.png' },

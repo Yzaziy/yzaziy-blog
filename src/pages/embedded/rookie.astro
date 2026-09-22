@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="【菜鸟篇】电脑选型指南与必备开发工具准备 | 嵌入式入门"
+  description="嵌入式入门第一站：为零基础萌新量身定制的电脑配置选型指南与纯净系统必备工具清单。"
+>
+  <article class="max-w-3xl mx-auto space-y-12">
+    <!-- 面包屑导航 -->
+    <nav class="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
+      <span>/</span>
+      <span>嵌入式入门</span>
+      <span>/</span>
+      <span class="text-amber-700 dark:text-amber-400 font-medium">菜鸟篇</span>
+      <span>/</span>
+      <span class="text-zinc-800 dark:text-zinc-200">电脑选购与必备工具</span>
+    </nav>
+
+    <!-- 头部模块信息 -->
+    <header class="border-b border-zinc-200 dark:border-zinc-800 pb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-4 border border-amber-500/20">
+        <img src="/ranks/rookie.png" alt="菜鸟" class="w-4 h-4 object-contain" />
+        <span>阶段 01 · 菜鸟启航</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
+        【菜鸟篇】电脑选型指南与必备开发工具准备
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        既然你点进了这个网站，那么你对嵌入式应该已经有了一定的兴趣与了解。工欲善其事，必先利其器——零基础萌新的第一步，往往就是拥有一台适合自己的电脑以及搭建起纯净高效的软件环境。
+      </p>
+    </header>
+
+    <!-- 第一部分：电脑选购指南 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第一部分：硬件篇 —— 适合自己的才是最好的
+        </h2>
+      </div>
+
+      <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        💡 <strong>萌新核心认知</strong>：对于绝大多数单片机开发（如 51、STM32 代码编写与编译仿真）而言，<strong>对电脑性能要求其实并不高</strong>，即使是普通办公本也足以胜任。但如果你想往更深处探索（如编译 Linux 内核、端侧 AI 部署、大型 IDE），或者课余开黑打打游戏，就必须认真权衡选型了。
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <!-- 笔记本 -->
+        <div class="flex flex-col justify-between p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-lg font-bold text-zinc-900 dark:text-zinc-100">💻 笔记本</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-medium">大学首选</span>
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3">能够随身携带到图书馆、自习室和实验室，便携性无可替代。</p>
+            <ul class="text-xs text-zinc-600 dark:text-zinc-300 space-y-2">
+              <li><strong>基础嵌入式</strong>：GTX 1080 级别或现代核显性能就完全够用。</li>
+              <li><strong>主流网游</strong>（三角洲/瓦罗兰特/CS:GO）：推荐显卡 <strong>RTX 4060</strong> 及以上。</li>
+              <li><strong>高画质 3A 大作</strong>：推荐显卡 <strong>RTX 5060</strong> 及以上。</li>
+              <li><strong>预算有限</strong>：目前新机配件溢价高，可考虑品质靠谱的二手游戏本。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 台式机 -->
+        <div class="flex flex-col justify-between p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-lg font-bold text-zinc-900 dark:text-zinc-100">🖥️ 台式机</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-medium">极致性能</span>
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3">适合大部分时间在宿舍或实验室固定工位使用的同学。</p>
+            <ul class="text-xs text-zinc-600 dark:text-zinc-300 space-y-2">
+              <li><strong>性能碾压</strong>：同价位性能与散热远超笔记本。</li>
+              <li><strong>DIY 自由度</strong>：后期升级、换件或多屏扩展极为方便，性价比极高。</li>
+              <li><strong>便携折中</strong>：可选择 <strong>ITX 规格便携小机箱</strong>，体积小到能轻松塞进行李箱。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mac -->
+        <div class="flex flex-col justify-between p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 shadow-sm hover:border-zinc-300 dark:hover:border-zinc-700 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-lg font-bold text-zinc-900 dark:text-zinc-100">🍎 Mac 系列</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 font-medium">极客专属</span>
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3">丝滑的 UNIX 环境与惊艳续航，但嵌入式生态适配较特殊。</p>
+            <ul class="text-xs text-zinc-600 dark:text-zinc-300 space-y-2">
+              <li><strong>优势</strong>：系统流畅，屏幕色彩优秀，本地 AI/大模型生态适配优秀。</li>
+              <li><strong>痛点</strong>：游戏基本断开连接；传统工业与单片机开发软件（Keil、仿真器驱动等）多为 Windows 独占，需折腾虚拟机。</li>
+              <li><strong>选购建议</strong>：只推荐给<strong>预算高</strong>、且<strong>完全没有游戏需求</strong>的人群。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 个人终极建议 -->
+      <div class="p-5 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/20">
+        <h3 class="text-base font-bold text-amber-800 dark:text-amber-300 flex items-center space-x-2 mb-2">
+          <span>🎯 我的独家配机建议（双机流方案）</span>
+        </h3>
+        <p class="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+          如果你的<strong>总预算充足（8000+ 元）</strong>，强烈建议采用“组合拳”模式：
+          <br />
+          配置一台 <strong>6000 元左右的性能台式机</strong> 放在宿舍作为常开算力核心，再配一台 <strong>2000 元左右的轻薄本/二手笔记本</strong>。外出上课或去实验室时，用笔记本远程连接控制宿舍里的台式机——轻装出门，却能调用宿舍的充沛算力！
+          <br />
+          如果预算在 4000~6000 元且没有极高画质游戏需求，直接选购一台符合预算的主流笔记本即可（办公本虽能应急但扩展性差，尽量避开）。
+        </p>
+      </div>
+    </section>
+
+    <!-- 第二部分：必备软件工具 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第二部分：软件篇 —— 磨刀不误砍柴工
+        </h2>
+      </div>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">
+        在正式进入代码与硬件实操之前，先在电脑中准备好以下基础工具，保持纯净环境，远离流氓软件捆绑：
+      </p>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <!-- 7-Zip -->
+        <a
+          href="https://www.7-zip.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-emerald-500/50 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 transition flex items-start justify-between"
+        >
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100">7-Zip（纯净解压缩）</span>
+            </div>
+            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              全球开源免费，无广告、无弹窗、体积小巧，解压各种工程代码包必备。
+            </p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500 group-hover:text-white transition shrink-0 ml-2">
+            官网 ↗
+          </span>
+        </a>
+
+        <!-- 火绒安全 -->
+        <a
+          href="https://www.huorong.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-emerald-500/50 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 transition flex items-start justify-between"
+        >
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100">火绒安全（系统防护）</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 font-semibold">千万别装360</span>
+            </div>
+            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              安静干净的防护软件，自带优秀的弹窗拦截器，能有效防止新手误装流氓软件全家桶。
+            </p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500 group-hover:text-white transition shrink-0 ml-2">
+            官网 ↗
+          </span>
+        </a>
+
+        <!-- WPS Office -->
+        <a
+          href="https://www.wps.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-emerald-500/50 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 transition flex items-start justify-between"
+        >
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100">WPS Office（文档办公）</span>
+            </div>
+            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              查看元器件芯片手册（Datasheet）、写实验报告必备，若已熟练使用微软 Office 则可免装。
+            </p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500 group-hover:text-white transition shrink-0 ml-2">
+            官网 ↗
+          </span>
+        </a>
+
+        <!-- 百度网盘 -->
+        <a
+          href="https://pan.baidu.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-emerald-500/50 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 transition flex items-start justify-between"
+        >
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100">百度网盘（资源下载）</span>
+            </div>
+            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              各开发板厂家（正点原子、野火等）海量单片机示例工程、视频与资料的核心存储地。
+            </p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500 group-hover:text-white transition shrink-0 ml-2">
+            官网 ↗
+          </span>
+        </a>
+
+        <!-- 夸克网盘 -->
+        <a
+          href="https://pan.quark.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-emerald-500/50 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 transition flex items-start justify-between"
+        >
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100">夸克网盘（极速传输）</span>
+            </div>
+            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              备用大容量云盘，许多高校资料与开发者分享资料的首选平台。
+            </p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500 group-hover:text-white transition shrink-0 ml-2">
+            官网 ↗
+          </span>
+        </a>
+
+        <!-- Steam++ (Watt Toolkit) -->
+        <a
+          href="https://steampp.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-emerald-500/50 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 transition flex items-start justify-between"
+        >
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Watt Toolkit（Steam++）</span>
+            </div>
+            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+              支持 GitHub 镜像加速、脚本支持、以及微软商店工具生态的网络辅助神器（可在微软商店直接获取）。
+            </p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 group-hover:bg-emerald-500 group-hover:text-white transition shrink-0 ml-2">
+            官网 ↗
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 尾声号角与原文档 GIF 动图展示 -->
+    <section class="border-t border-zinc-200 dark:border-zinc-800 pt-8 text-center space-y-6">
+      <div class="inline-block">
+        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
+          准备好电脑，向【青铜篇】前进！！
+        </h3>
+        <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          第一站的基础整备已全部就绪，接下来将正式开启 C 语言与硬件编程的探索。
+        </p>
+      </div>
+
+      <!-- 原文档对应位置的 GIF 动图 -->
+      <div class="flex justify-center items-center py-4">
+        <div class="relative group rounded-2xl overflow-hidden shadow-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 max-w-sm">
+          <img
+            src="/embedded/image1.gif"
+            alt="准备好电脑，向青铜篇前进！"
+            class="w-full h-auto object-contain rounded-2xl"
+          />
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
