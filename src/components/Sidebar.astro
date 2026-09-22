@@ -50,11 +50,11 @@ import { sidebarItems } from '../data/sidebar';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </summary>
-          <div class="mt-1 ml-5 pl-4 border-l-2 border-zinc-200 dark:border-zinc-800 space-y-1 py-1">
+          <div class="mt-1 ml-5 pl-3 border-l-2 border-zinc-200 dark:border-zinc-800 space-y-1 py-1">
             {item.children.map((child) => (
               child.children && child.children.length > 0 ? (
                 <details class="group/sub [&_summary::-webkit-details-marker]:hidden">
-                  <summary class="flex items-center justify-between w-full px-3 py-2 rounded-lg text-[13px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 cursor-pointer">
+                  <summary class="flex items-center justify-between w-full px-3 py-2 rounded-lg text-[13.5px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 cursor-pointer">
                     <span class="truncate">{child.title}</span>
                     <svg class="w-3.5 h-3.5 text-zinc-400 shrink-0 transition-transform duration-200 group-open/sub:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -74,9 +74,17 @@ import { sidebarItems } from '../data/sidebar';
               ) : (
                 <a
                   href={child.href || '#'}
-                  class="block px-3 py-2 rounded-lg text-[13.5px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors truncate"
+                  class="flex items-center justify-between w-full px-3.5 py-2 rounded-xl text-[14px] font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-all group/item"
                 >
-                  {child.title}
+                  <span class="truncate">{child.title}</span>
+                  {child.badge && (
+                    <img
+                      src={child.badge}
+                      alt={child.title}
+                      class="w-6 h-6 object-contain shrink-0 drop-shadow-sm transition-transform duration-150 group-hover/item:scale-110"
+                      loading="lazy"
+                    />
+                  )}
                 </a>
               )
             ))}

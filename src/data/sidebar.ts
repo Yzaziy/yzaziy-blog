@@ -3,6 +3,7 @@ export interface MenuItem {
   title: string;
   icon: string;
   href?: string;
+  badge?: string;
   children?: MenuItem[];
 }
 
@@ -12,14 +13,14 @@ export const sidebarItems: MenuItem[] = [
     title: '嵌入式入门',
     icon: 'chip',
     children: [
-      { id: 'rank-rookie', title: '菜鸟', href: '#' },
-      { id: 'rank-bronze', title: '青铜', href: '#' },
-      { id: 'rank-silver', title: '白银', href: '#' },
-      { id: 'rank-gold', title: '黄金', href: '#' },
-      { id: 'rank-platinum', title: '白金', href: '#' },
-      { id: 'rank-diamond', title: '钻石', href: '#' },
-      { id: 'rank-master', title: '大师', href: '#' },
-      { id: 'rank-predator', title: '猎杀', href: '#' },
+      { id: 'rank-rookie', title: '菜鸟', href: '#', badge: '/ranks/rookie.png' },
+      { id: 'rank-bronze', title: '青铜', href: '#', badge: '/ranks/bronze.png' },
+      { id: 'rank-silver', title: '白银', href: '#', badge: '/ranks/silver.png' },
+      { id: 'rank-gold', title: '黄金', href: '#', badge: '/ranks/gold.png' },
+      { id: 'rank-platinum', title: '白金', href: '#', badge: '/ranks/platinum.png' },
+      { id: 'rank-diamond', title: '钻石', href: '#', badge: '/ranks/diamond.png' },
+      { id: 'rank-master', title: '大师', href: '#', badge: '/ranks/master.png' },
+      { id: 'rank-predator', title: '猎杀', href: '#', badge: '/ranks/predator.png' },
     ]
   },
   {
