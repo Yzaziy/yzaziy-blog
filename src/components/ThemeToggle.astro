@@ -33,19 +33,17 @@
     updateThemeUI();
 
     const themeToggleBtn = document.getElementById('theme-toggle');
-    // Remove existing listener clone to avoid duplicate listeners
-    const newBtn = themeToggleBtn?.cloneNode(true);
-    if (newBtn && themeToggleBtn && themeToggleBtn.parentNode) {
-      themeToggleBtn.parentNode.replaceChild(newBtn, themeToggleBtn);
-      newBtn.addEventListener('click', () => {
+    if (themeToggleBtn) {
+      themeToggleBtn.onclick = () => {
         const isDark = document.documentElement.classList.toggle('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
         updateThemeUI();
-      });
+      };
     }
   }
 
   setupThemeToggle();
+  document.addEventListener('astro:after-swap', setupThemeToggle);
   document.addEventListener('astro:page-load', setupThemeToggle);
 </script>
 

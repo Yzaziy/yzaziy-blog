@@ -24,24 +24,33 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <!-- Astro 客户端路由（实现页面无刷新切换、背景持续连贯加载） -->
     <ClientRouter />
     <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
+      function applySavedTheme() {
+        const theme = (() => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme');
+          }
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+          }
+          return 'light';
+        })();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
       }
+
+      // 1. 首屏立即执行
+      applySavedTheme();
+
+      // 2. 切页 DOM 替换时（渲染前）立即恢复深色模式，杜绝切回浅色
+      document.addEventListener('astro:after-swap', applySavedTheme);
+      document.addEventListener('astro:page-load', applySavedTheme);
     </script>
   </head>
   <body class="flex flex-col min-h-screen relative text-zinc-900 dark:text-zinc-100 antialiased">
-    <!-- 全局持久化动态背景视频（transition:persist 实现切页不间断、不闪烁、不重新加载） -->
+    <!-- 全局持久化动态背景视频（transition:persist 实现切页不间断、不闪烁） -->
     <div
       id="bg-video-wrapper"
       transition:persist
@@ -106,9 +115,9 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
         const closeBtn = document.getElementById('close-mobile-sidebar');
         const backdrop = document.getElementById('mobile-sidebar-backdrop');
 
-        toggleBtn?.addEventListener('click', () => drawer?.classList.remove('hidden'));
-        closeBtn?.addEventListener('click', () => drawer?.classList.add('hidden'));
-        backdrop?.addEventListener('click', () => drawer?.classList.add('hidden'));
+        if (toggleBtn) toggleBtn.onclick = () => drawer?.classList.remove('hidden');
+        if (closeBtn) closeBtn.onclick = () => drawer?.classList.add('hidden');
+        if (backdrop) backdrop.onclick = () => drawer?.classList.add('hidden');
 
         // 确保持久化视频始终处于播放状态
         const video = document.getElementById('bg-video');
