@@ -72,7 +72,7 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
       >
         <source src="/bg-video.mp4" type="video/mp4" />
       </video>
-      <!-- 磨砂半透明遮罩，移除动画过渡以防切页时有透明度延迟变色 -->
+      <!-- 磨砂半透明遮罩 -->
       <div class="absolute inset-0 bg-white/75 dark:bg-zinc-950/80 backdrop-blur-[1px]"></div>
     </div>
 
@@ -80,9 +80,12 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <Header />
 
     <!-- 页面主体内容（居于最上层） -->
-    <div class="flex-grow flex w-full relative z-10">
-      <!-- 桌面端侧边栏（transition:persist 保持展开折叠状态不重置） -->
-      <div class="hidden md:block w-72 flex-shrink-0" transition:persist="sidebar-desktop">
+    <div class="flex-grow flex w-full relative z-10 items-start">
+      <!-- 桌面端侧边栏（self-start + sticky top-16 确保随页面滚屏始终吸顶浮动跟随在左侧） -->
+      <div
+        class="hidden md:block w-72 flex-shrink-0 self-start sticky top-16 z-30"
+        transition:persist="sidebar-desktop"
+      >
         <Sidebar />
       </div>
 
