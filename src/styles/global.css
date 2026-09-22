@@ -4,6 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-200 antialiased;
+    @apply bg-transparent text-zinc-900 dark:text-zinc-100 transition-colors duration-200 antialiased;
   }
 }
+

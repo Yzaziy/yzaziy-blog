@@ -37,18 +37,38 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
       }
     </script>
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen relative text-zinc-900 dark:text-zinc-100 antialiased">
+    <!-- 全局动态视频背景（稍微模糊处理 + 保护文字可读性） -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none select-none">
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+        class="absolute inset-0 w-full h-full object-cover filter blur-[5px] scale-105 transform-gpu"
+      >
+        <source src="/bg-video.mp4" type="video/mp4" />
+      </video>
+      <!-- 磨砂半透明遮罩，保证前台文字对比度与清晰度 -->
+      <div class="absolute inset-0 bg-white/75 dark:bg-zinc-950/80 backdrop-blur-[1px] transition-colors duration-300"></div>
+    </div>
+
+    <!-- 顶部导航 -->
     <Header />
-    <div class="flex-grow flex w-full">
-      <!-- Desktop Sidebar -->
+
+    <!-- 页面主体内容（居于最上层） -->
+    <div class="flex-grow flex w-full relative z-10">
+      <!-- 桌面端侧边栏 -->
       <div class="hidden md:block w-72 flex-shrink-0">
         <Sidebar />
       </div>
-      <!-- Mobile Sidebar Drawer -->
+
+      <!-- 移动端侧边抽屉 -->
       <div id="mobile-sidebar-drawer" class="fixed inset-0 z-50 hidden md:hidden">
         <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
-        <div class="fixed inset-y-0 left-0 w-72 bg-white dark:bg-zinc-950 shadow-xl flex flex-col z-10 border-r border-zinc-200 dark:border-zinc-800">
-          <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <div class="fixed inset-y-0 left-0 w-72 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-xl flex flex-col z-10 border-r border-zinc-200/80 dark:border-zinc-800/80">
+          <div class="p-4 border-b border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
             <span class="font-bold text-zinc-900 dark:text-zinc-100">分类导航</span>
             <button id="close-mobile-sidebar" class="p-1 rounded-md text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="关闭侧边栏">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,11 +81,14 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
           </div>
         </div>
       </div>
-      <!-- Main Content Area -->
-      <main class="flex-grow min-w-0 px-4 sm:px-10 py-10 max-w-4xl mx-auto w-full">
+
+      <!-- 主内容区域（确保所有内容与交互均在最上层） -->
+      <main class="flex-grow min-w-0 px-4 sm:px-10 py-10 max-w-4xl mx-auto w-full relative z-10">
         <slot />
       </main>
     </div>
+
+    <!-- 底部信息 -->
     <Footer />
 
     <script is:inline>
