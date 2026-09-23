@@ -29,7 +29,14 @@ export const sidebarItems: MenuItem[] = [
           { id: 'bronze-c-lang', title: 'C语言基础与编译器', href: '/embedded/bronze' }
         ]
       },
-      { id: 'rank-silver', title: '白银', href: '#', badge: '/ranks/silver.png' },
+      {
+        id: 'rank-silver',
+        title: '白银',
+        badge: '/ranks/silver.png',
+        children: [
+          { id: 'silver-stm32-std', title: 'STM32标准库开发', href: '/embedded/silver' }
+        ]
+      },
       { id: 'rank-gold', title: '黄金', href: '#', badge: '/ranks/gold.png' },
       { id: 'rank-platinum', title: '白金', href: '#', badge: '/ranks/platinum.png' },
       { id: 'rank-diamond', title: '钻石', href: '#', badge: '/ranks/diamond.png' },
