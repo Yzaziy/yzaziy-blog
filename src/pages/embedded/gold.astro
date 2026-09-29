@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="【黄金篇】STM32 HAL库开发与现代工作流 | 嵌入式入门"
+  description="嵌入式入门第四站：告别Keil古董编辑器，重回现代文明！STM32CubeMX图形化配置、VS Code现代编译环境、CMake构建系统，搭配AI编程搭子DeepSeek实战提效。"
+>
+  <article class="max-w-3xl mx-auto space-y-12">
+    <!-- 面包屑导航 -->
+    <nav class="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
+      <span>/</span>
+      <span>嵌入式入门</span>
+      <span>/</span>
+      <span class="text-zinc-500 dark:text-zinc-400 font-medium">黄金篇</span>
+      <span>/</span>
+      <span class="text-zinc-800 dark:text-zinc-200">STM32 HAL库开发</span>
+    </nav>
+
+    <!-- 头部信息 -->
+    <header class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-4 border border-amber-500/20">
+        <img src="/ranks/gold.png" alt="黄金" class="w-4 h-4 object-contain" />
+        <span>阶段 04 · 黄金进阶</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
+        【黄金篇】STM32 HAL 库与现代开发工作流
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        在【白银篇】死磕完标准库的同学，此刻是不是正深陷在 Keil 那个上世纪 90 年代的大白框里怀疑人生？代码提示几乎没有、界面字体模糊泛黄、手写一大堆寄存器和外设初始化结构体更是让人晕头转向 (。_。)……<br /><br />
+        “这个时钟分频到底配哪路？那个中断函数名又抄错了？”(つД｀)<br />
+        如果你之前接触过 Python、Java 或现代 Web 前端，肯定享受过现代 IDE 带来的智能代码补全与丝滑体验。所以这一章我们的核心使命非常纯粹：<strong>砸碎古董编辑器的精神枷锁，重回现代文明社会！</strong> ヾ(≧▽≦*)o 带着 STM32CubeMX、VS Code 现代开发环境、CMake 自动化构建，以及 24 小时随叫随到的 AI 编程搭子，让你体会一把什么叫“科技改变生活”！
+      </p>
+    </header>
+
+    <!-- 第一部分：工欲善其事，必先利其器 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-500 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第一部分：告别原始人！现代单片机开发“全家桶”
+        </h2>
+      </div>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        在正式写代码之前，先在电脑上备齐这套颠覆传统嵌入式体验的现代开发利器 ( ﾟ∀ﾟ)つ：
+      </p>
+
+      <!-- 工具卡片组 -->
+      <div class="grid gap-4 sm:grid-cols-3">
+        <!-- CubeMX -->
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm flex flex-col justify-between space-y-4 hover:border-amber-500/50 transition group">
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 p-1.5 border border-zinc-200/80 dark:border-zinc-700/80 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition">
+                <img src="/embedded/gold/cubemx.png" alt="CubeMX" class="w-full h-full object-contain" />
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 truncate">CubeMX</h3>
+                <span class="text-xs text-amber-600 dark:text-amber-400 font-medium">ST 官方驱动初始化</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              意法半导体官方推出的芯片引脚与驱动配置神器。时钟树计算、引脚功能映射、定时器分频全靠鼠标拖拽点选，一键自动生成干净标准、结构清晰的 HAL 库初始化代码！
+            </p>
+          </div>
+          <a
+            href="https://www.st.com/zh/development-tools/stm32cubemx.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center w-full py-2 px-3 text-xs font-semibold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
+          >
+            官网下载 ↗
+          </a>
+        </div>
+
+        <!-- VS Code -->
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm flex flex-col justify-between space-y-4 hover:border-blue-500/50 transition group">
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 p-1.5 border border-zinc-200/80 dark:border-zinc-700/80 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition">
+                <img src="/embedded/gold/vscode.png" alt="VS Code" class="w-full h-full object-contain" />
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 truncate">VS Code</h3>
+                <span class="text-xs text-blue-600 dark:text-blue-400 font-medium">轻量级现代编辑器</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              当今整个软件行业统治级的编辑器。拥有浩瀚的插件生态、极其舒适的深色主题、极速代码跳转与 IntelliSense 智能补全，敲代码的幸福感直接拉满！(*^▽^*)
+            </p>
+          </div>
+          <a
+            href="https://code.visualstudio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center w-full py-2 px-3 text-xs font-semibold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
+          >
+            官网下载 ↗
+          </a>
+        </div>
+
+        <!-- CMake -->
+        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm flex flex-col justify-between space-y-4 hover:border-emerald-500/50 transition group">
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 p-1.5 border border-zinc-200/80 dark:border-zinc-700/80 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition">
+                <img src="/embedded/gold/cmake.png" alt="CMake" class="w-full h-full object-contain" />
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 truncate">CMake</h3>
+                <span class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">跨平台项目构建系统</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              现代工程编译必不可少的构建核心。初学者无需去硬啃繁琐的构建脚本语法，只需把它下载并安装到系统里，其余一切让插件自动化完成。
+            </p>
+          </div>
+          <a
+            href="https://cmake.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center w-full py-2 px-3 text-xs font-semibold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
+          >
+            官网下载 ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- 避坑提醒卡片 -->
+      <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs sm:text-sm space-y-2">
+        <div class="font-bold flex items-center space-x-2">
+          <span>⚠️ 重点避坑提示（安装 CMake 时务必注意）：</span>
+        </div>
+        <p class="leading-relaxed">
+          下载安装 CMake 时，<strong>请务必保持默认安装路径</strong>（如 <code>C:\Program Files\CMake</code>），并在安装选项中勾选 <strong>“Add CMake to the system PATH”</strong>！<br />
+          千万别随手改到带<strong>中文路径、空格或特殊字符</strong>的奇葩盘符下，否则后续在 VS Code 里调用编译工具链时，会遇到让你抓耳挠腮一整天的幽灵报错 (；′⌒д⌒)！
+        </p>
+      </div>
+
+      <!-- 保姆级安装教程推荐 -->
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
+        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 flex items-center space-x-2">
+          <span>📺 保姆级安装配置教程（强推）</span>
+        </h3>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          很多新手第一次把 VS Code、CubeMX、GCC 工具链以及 OpenOCD 串联在一起时容易心里发怵。别慌！跟着这位 UP 主的实操视频一步步来，手把手带你配置全流程，大人，时代真的变啦 (ง •_•)ง：
+        </p>
+
+        <a
+          href="https://www.bilibili.com/video/BV1QfbpzGENy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-4 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 hover:bg-blue-100/50 dark:hover:bg-blue-900/30 transition group"
+        >
+          <div class="flex items-center space-x-3.5 min-w-0">
+            <span class="text-2xl">⚡</span>
+            <div class="min-w-0">
+              <div class="font-bold text-sm text-zinc-900 dark:text-zinc-100 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                【爽！手把手教你用VSCode开发STM32【大人，时代变啦！！！】】
+              </div>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                B站 UP 主手把手教学，点击直接跳转观看 ↗
+              </p>
+            </div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium shrink-0 ml-3 transition shadow-sm">
+            前往学习
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 第二部分：降维打击！AI Agent 助手进驻编辑器 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-500 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第二部分：降维打击！AI 编程助手进驻 VS Code
+        </h2>
+      </div>
+
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-5">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-zinc-800 p-2 flex items-center justify-center shrink-0 border border-zinc-700 shadow-md">
+            <img src="/embedded/gold/copilot.png" alt="Copilot" class="w-full h-full object-contain" />
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
+              初识 AI Agent：不仅是补全，更是全能搭子
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400">
+              告别死抠手册 · 随时呼唤的赛博导师
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          装好现代开发环境后，你将正式接触到 21 世纪写代码最具幸福感的东西 —— <strong>AI Agent 编程助手</strong>。<br />
+          很多同学首先听说的是官方推荐的 <strong>GitHub Copilot</strong>，但它由于服务器都在海外，国内网络裸连速度经常非常慢，甚至动不动就网络连接超时掉线，十分影响心态 ( ˘･з･)。
+        </p>
+
+        <!-- DeepSeek 拯救计划 -->
+        <div class="p-4 rounded-xl bg-sky-50/60 dark:bg-sky-950/30 border border-sky-200/80 dark:border-sky-800/60 space-y-3">
+          <div class="flex items-center space-x-2 text-sky-800 dark:text-sky-300 font-bold text-sm">
+            <span>💡 破局方案：国内直连 DeepSeek（蓝色大肥鱼老师！）</span>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+            不用花美刀，更不用忍受高延迟！我们可以通过国内成熟的插件体系，把 <strong>DeepSeek</strong> 无缝接入 VS Code。详细配置教程已经在我们的 <strong>【AI 专区：DeepSeek 接入 VS Code 实战】</strong> 中整理齐备。<br />
+            接入之后，侧边栏直接常驻你的<strong>“蓝色大肥鱼”导师</strong> ( •̀ ω •́ )✧：遇到看不懂的 HAL 库回调函数，直接圈选提问；编译报错时，右键一键解释原因；想查某个外设的具体配置宏，大肥鱼老师两秒内精准为你解答，脾气好、全中文、24小时待命！
+          </p>
+        </div>
+
+        <!-- 趣味动图 -->
+        <div class="flex justify-center py-2">
+          <div class="rounded-xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 max-w-xs shadow-sm">
+            <img src="/embedded/gold/ai-meme.gif" alt="AI编程助手实战" class="w-full h-auto object-contain" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第三部分：正式学习 HAL 库 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-500 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第三部分：正式学习 HAL 库 —— 揭开面纱与温故知新
+        </h2>
+      </div>
+
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
+        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
+          🧠 心态揭秘：HAL 库到底是什么？
+        </h3>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          很多初学者听到“HAL 库”三个字会心里打鼓：我是不是又要从头再背一套厚厚的语法了？<br />
+          <strong>大实话告诉你：完全不用慌！</strong> 底层的 STM32 芯片晶圆结构、GPIO 电平翻转原理、定时器分频计数、中断向量表和串口通信时序，自始至终<strong>没有发生一丁点改变</strong>！<br />
+          HAL 库与标准库的工程逻辑本质上是完全相通的，大部分操作其实就是把曾经标准库的函数名字变了变，在前面加了一个 <code>HAL_</code> 前缀（例如标准库的 <code>GPIO_WriteBit</code> 变成了 <code>HAL_GPIO_WritePin</code>）。所以，你现在的学习其实是带着满身经验去<strong>复刻和印证</strong>过去的内容，真正的温故而知新！(ﾉ>ω<)ﾉ
+        </p>
+
+        <!-- 课程推荐卡片 -->
+        <div class="mt-4 pt-4 border-t border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+          <h4 class="font-semibold text-sm text-zinc-800 dark:text-zinc-200">
+            🎬 进阶课程强推：江协 STM32 教程 HAL 库重制版
+          </h4>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            这位 UP 主把江协老师当年的经典标准库例程，无缝重写成了现代 HAL 库实现：
+          </p>
+
+          <a
+            href="https://www.bilibili.com/video/BV15JojYWEnu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between p-4 rounded-xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 hover:bg-amber-100/50 dark:hover:bg-amber-900/30 transition group"
+          >
+            <div class="flex items-center space-x-3.5 min-w-0">
+              <span class="text-2xl">📺</span>
+              <div class="min-w-0">
+                <div class="font-bold text-sm text-zinc-900 dark:text-zinc-100 truncate group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">
+                  【江协STM32 HAL库重制】6.oled显示屏（全套重制视频）
+                </div>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                  标准库无缝迁移 HAL 库必备参考，点击直接跳转 B 站观看 ↗
+                </p>
+              </div>
+            </div>
+            <span class="text-xs px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-medium shrink-0 ml-3 transition shadow-sm">
+              前往学习
+            </span>
+          </a>
+        </div>
+
+        <!-- 学习诀窍总结 -->
+        <div class="p-4 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-700/60 space-y-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
+          <div class="font-bold text-zinc-900 dark:text-zinc-100 flex items-center space-x-1.5">
+            <span>✨ 学习秘诀：“双修互补”法</span>
+          </div>
+          <p class="leading-relaxed">
+            重制版 UP 主主打高效转换，但较少铺开讲底层硬件原理。因此<strong>最科学的学习姿势是配合江协老师当年的标准库视频对照着看</strong>！当你结合 CubeMX 图形化时钟树再去看江协老师讲的时钟架构时，你会惊喜地发现之前很多模糊生硬的概念瞬间茅塞顿开、当场开智！这也是为什么大家都说“先学标准库知原理，再学 HAL 库提效率”的原因。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第四部分：黄金总结与冲关 -->
+    <section class="space-y-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-2 h-7 bg-amber-500 rounded-full"></div>
+        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第四部分：通关心态 —— 轻舟已过万重山
+        </h2>
+      </div>
+
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          这一阶段并没有设置折磨人的复杂阶段性考核，因为在【白银篇】你已经把最硬的一块骨头啃下来了！掌握了单片机的本质工作模式之后，学 HAL 库就是坐上了高铁，速度会快得出奇，顺畅通关就在眼前 ٩( 'ω' )و！<br /><br />
+          学习 HAL 库的两大核心价值：<br />
+          <strong>1. 开发效率翻倍</strong>：CubeMX 帮你自动生成 80% 的外设样板代码，让你把宝贵的时间精力集中在项目的算法与核心交互逻辑上；<br />
+          <strong>2. 跨平台移植极其优雅</strong>：从低成本的 F103 切换到高性能的 F4/H7，或者各类型号之间移植外设驱动，HAL 库几乎无需重构底层，改几个宏就能无缝复用！
+        </p>
+
+        <p class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
+          带着这份现代工具链的自信，尽情享受流畅编程的乐趣，准备向接下来的【白金篇】（FreeRTOS 实时系统 / ESP32 跨界联网）大步迈进吧！(ง •_•)ง
+        </p>
+
+        <!-- 结尾鼓励表情包 -->
+        <div class="flex justify-center pt-2 pb-1">
+          <div class="rounded-xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 max-w-xs shadow-sm">
+            <img src="/embedded/gold/ending-meme.gif" alt="通关黄金篇" class="w-full h-auto object-contain" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
