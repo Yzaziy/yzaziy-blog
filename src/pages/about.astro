@@ -2,15 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="关于我 | Yzaziy" description="关于 Yzaziy 的个人介绍">
-  <article class="prose dark:prose-invert prose-zinc max-w-none">
+<BaseLayout title="关于我 | Yzaziy" description="这里是 Yzaziy 的学习与开发笔记，记录嵌入式入门、动手实践和日常折腾。">
+  <article class="reading-page prose prose-zinc dark:prose-invert max-w-none">
     <h1>关于我</h1>
-    <p>你好！我是 Yzaziy。</p>
-    <p>这是一个基于 Astro 和 Tailwind CSS 构建的静态个人主页，追求极简、高性能与纯粹的阅读体验。</p>
-    <h2>联系方式</h2>
-    <ul>
-      <li>域名: <a href="https://yzaziy.cn">yzaziy.cn</a></li>
-      <li>邮箱: yzaziy@outlook.com</li>
-    </ul>
+    <p class="about-intro">你好，我是 Yzaziy。欢迎来我的小站坐坐。</p>
+    <p>我把学习和开发中用得上的东西记在这里：从电脑和工具的准备，到 C 语言、STM32，再到把零散的知识接起来做一个作品。</p>
+    <p>这些文章也是写给自己的备忘。能讲清楚的就讲清楚，踩过的坑尽量留个提醒。如果你也刚开始学嵌入式，可以从菜鸟篇往下走，不用着急。</p>
+    <h2>从哪里开始</h2>
+    <p><a href="/embedded/rookie">电脑与工具准备</a>适合第一次来的同学；已经准备好环境，就直接去看<a href="/embedded/bronze">C 语言基础</a>。后面还有 STM32 标准库和 HAL 库的实践记录。</p>
+    <h2>联系我</h2>
+    <p>文章有疏漏，或者你有想交流的想法，欢迎写信到 <a href="mailto:yzaziy@outlook.com">yzaziy@outlook.com</a>。</p>
   </article>
 </BaseLayout>

@@ -3,38 +3,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+const posts = (await getCollection('blog')).sort((a, b) =>
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  || (b.data.updatedDate || b.data.pubDate).valueOf() - (a.data.updatedDate || a.data.pubDate).valueOf()
+  || a.slug.localeCompare(b.slug)
 );
+const stages = [
+  { title: '菜鸟', description: '准备电脑与工具', href: '/embedded/rookie', badge: '/ranks/rookie.png' },
+  { title: '青铜', description: '打好 C 语言基础', href: '/embedded/bronze', badge: '/ranks/bronze.png' },
+  { title: '白银', description: '用标准库认识 STM32', href: '/embedded/silver', badge: '/ranks/silver.png' },
+  { title: '黄金', description: '上手 HAL 库与新工具', href: '/embedded/gold', badge: '/ranks/gold.png' },
+];
 ---
 
-<BaseLayout title="Yzaziy - 个人博客">
-  <section class="mb-12">
-    <h1 class="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-      你好，我是 Yzaziy
-    </h1>
-    <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-      欢迎来到我的个人博客！在这里我会分享技术思考、个人开发记录以及有趣的知识。
-    </p>
+<BaseLayout title="Yzaziy · 学习与开发笔记" description="记录嵌入式学习、开发实践和日常折腾。从电脑准备、C 语言到 STM32，一步一步把想法做成作品。">
+  <section class="home-intro">
+    <h1>你好，我是 Yzaziy</h1>
+    <p>这里放着我的学习笔记和开发记录。遇到的问题、试过的方法，以及终于跑起来的小作品，都慢慢记下来。</p>
+    <a class="text-link" href="/about">认识一下
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M5 12h14m-6-6 6 6-6 6" /></svg>
+    </a>
   </section>
 
-  <section>
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-        最新文章
-      </h2>
+  <section class="learning-path" aria-labelledby="learning-title">
+    <div class="section-heading">
+      <h2 id="learning-title">嵌入式入门路线</h2>
+      <span>从准备工具，到动手实践</span>
     </div>
-    <div class="grid gap-6">
+    <ol class="stage-list">
+      {stages.map((stage) => (
+        <li>
+          <a href={stage.href} class="stage-link">
+            <img src={stage.badge} width="30" height="30" alt="" />
+            <div><span class="stage-title">{stage.title}</span><span class="stage-description">{stage.description}</span></div>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="m9 5 7 7-7 7" /></svg>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="latest-posts" aria-labelledby="latest-title">
+    <div class="section-heading">
+      <h2 id="latest-title">最新文章</h2>
+      <span>{posts.length} 篇笔记</span>
+    </div>
+    <div class="post-list">
       {posts.map((post) => (
-        <PostCard
-          title={post.data.title}
-          description={post.data.description}
-          pubDate={post.data.pubDate}
-          slug={post.slug}
-          href={post.data.customUrl}
-        />
+        <PostCard title={post.data.title} description={post.data.description}
+          pubDate={post.data.pubDate} updatedDate={post.data.updatedDate}
+          tags={post.data.tags} slug={post.slug} href={post.data.customUrl} />
       ))}
     </div>
   </section>
 </BaseLayout>
-

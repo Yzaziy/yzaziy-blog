@@ -3,285 +3,156 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="【青铜篇】C语言核心基础与编译器选型 | 嵌入式入门"
-  description="嵌入式入门第二站：从零搞懂C语言要学到什么程度、4款常用编译器真实测评与高性价比学习路线。"
+  title="【青铜篇】C 语言基础与开发工具选择 | 嵌入式入门"
+  description="区分编辑器、IDE 与编译器，选择适合课程的 C 语言开发环境，并用流程控制、函数和指针练习检验学习进度。"
 >
-  <article class="max-w-3xl mx-auto space-y-12">
-    <!-- 面包屑导航 -->
-    <nav class="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+  <article class="tutorial max-w-3xl mx-auto space-y-12 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+    <nav class="breadcrumbs flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400" aria-label="面包屑">
       <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
-      <span>/</span>
+      <span aria-hidden="true">/</span>
       <span>嵌入式入门</span>
-      <span>/</span>
-      <span class="text-amber-700 dark:text-amber-500 font-medium">青铜篇</span>
-      <span>/</span>
-      <span class="text-zinc-800 dark:text-zinc-200">C语言与开发工具</span>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page" class="text-zinc-900 dark:text-zinc-100">青铜篇</span>
     </nav>
 
-    <!-- 头部信息 -->
-    <header class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-8">
-      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-600/10 text-amber-700 dark:text-amber-400 text-xs font-semibold mb-4 border border-amber-600/20">
-        <img src="/ranks/bronze.png" alt="青铜" class="w-4 h-4 object-contain" />
-        <span>阶段 02 · 青铜进阶</span>
+    <header class="article-header border-b border-zinc-200 dark:border-zinc-800 pb-8">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-zinc-900 dark:text-zinc-100">C 语言基础与开发工具选择</h1>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <img src="/ranks/bronze.png" alt="" class="w-5 h-5 object-contain" />
+        <span>青铜篇 · 编程基础</span>
+        <span>更新于 <time datetime="2026-10-03">2026 年 10 月 3 日</time></span>
       </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-        【青铜篇】C语言核心基础与编译器选型
-      </h1>
-      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        C语言是嵌入式的绝对基石，绝大部分单片机底层固件都是用C写出来的。很多同学一听说学C就头大，但别慌——搞嵌入式<strong>不需要你把C语言深挖到底层编译原理</strong>，基本上掌握到<strong>指针基础</strong>，就能昂首挺胸跨进嵌入式的大门了！
+      <p class="mt-6 text-base sm:text-lg leading-8">
+        C 语言常用于单片机固件开发。这一阶段先练习程序流程、数组、函数和指针，学会编译、运行与调试自己的代码。不必一开始就研究编译器原理，但也不能只看完视频：能独立完成小程序，才是进入硬件实践的可靠起点。
       </p>
-
-      <!-- 对应原位置动图 1 -->
-      <div class="flex justify-center my-6">
-        <div class="rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/50 shadow-sm max-w-xs">
-          <img src="/embedded/bronze/image1.GIF" alt="学C语言别慌" class="w-full h-auto object-contain" />
+      <!-- 保留原文开篇动图的位置 -->
+      <div class="flex justify-center mt-6">
+        <div class="rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 max-w-xs">
+          <img src="/embedded/bronze/image1.GIF" alt="C 语言学习开篇动图" class="w-full h-auto object-contain" />
         </div>
       </div>
     </header>
 
-    <!-- 第一部分：编译器大比拼 -->
     <section class="space-y-6">
-      <div class="flex items-center space-x-3">
-        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
-        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          第一部分：常用C语言编译器真实测评
-        </h2>
-      </div>
-      <p class="text-sm text-zinc-600 dark:text-zinc-400">
-        写代码得有顺手的兵刃，下面给初学者客观扒一扒目前市面上最常见的 4 种工具（均附官方下载链接）：
+      <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">第一部分：选择 C 语言开发环境</h2>
+      <p class="text-base leading-8">
+        <strong>编辑器</strong>负责写代码，<strong>编译器</strong>把源代码转换成可执行程序，<strong>IDE</strong>把编辑、构建和调试组织在一起。下面这四款工具并不都是编译器；初学时优先选择与课程一致的环境，先把一个程序跑通。
       </p>
 
-      <div class="grid gap-5 sm:grid-cols-2">
-        <!-- Dev-C++ -->
-        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center space-x-3">
-                <img src="/embedded/bronze/image2.png" alt="Dev-C++" class="w-8 h-8 object-contain rounded" />
-                <div>
-                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">DEV C++</h3>
-                  <span class="text-[11px] text-zinc-400">复古老牌 · 纯粹极简</span>
-                </div>
-              </div>
-              <a
-                href="https://devc.biancheng.net/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition shrink-0"
-              >
-                官网 ↗
-              </a>
+      <div class="divide-y divide-zinc-200 dark:divide-zinc-800">
+        <div class="space-y-4 pb-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img src="/embedded/bronze/image2.png" alt="" class="w-8 h-8 object-contain rounded" />
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Dev-C++</h3>
             </div>
-            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              古董级老兵，最大的长处是体积小、环境极其稳定，装上就能跑，很多高校大一上机都用它。缺点是界面确实太古老，毫无现代编辑器体验，需要耐下心适应。
-            </p>
+            <a href="https://devc.biancheng.net/" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-700 dark:text-zinc-300 underline underline-offset-4">下载说明 ↗</a>
           </div>
-          <div class="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-xs text-zinc-500">
-            适合：老机器应急、只想纯粹验证简单语法算法的人。
-          </div>
+          <p class="text-base leading-8">
+            一些入门课程会使用的 C/C++ IDE，适合跟着相同环境练习语法与小程序。不同发行版附带的工具链可能不同，使用前先确认版本和课程是否一致，不要仅因为界面简单就忽略编译器差异。
+          </p>
+          <p class="text-base leading-8"><strong>适合：</strong>课程已经采用 Dev-C++，或现有环境能稳定完成基础练习。上方保留的是第三方下载说明页，下载时核对来源与版本。</p>
         </div>
 
-        <!-- CLion -->
-        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center space-x-3">
-                <img src="/embedded/bronze/image3.png" alt="CLion" class="w-8 h-8 object-contain rounded" />
-                <div>
-                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">CLion</h3>
-                  <span class="text-[11px] text-purple-600 dark:text-purple-400 font-medium">JetBrains 家族 · 现代颜值派</span>
-                </div>
-              </div>
-              <a
-                href="https://www.jetbrains.com/clion/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-2.5 py-1 rounded-lg bg-purple-100/80 dark:bg-purple-950/60 hover:bg-purple-200 dark:hover:bg-purple-900/60 text-xs font-medium text-purple-700 dark:text-purple-300 transition shrink-0"
-              >
-                官网 ↗
-              </a>
+        <div class="space-y-4 py-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img src="/embedded/bronze/image3.png" alt="" class="w-8 h-8 object-contain rounded" />
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">CLion</h3>
             </div>
-            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              当下主流C/C++现代IDE代表，UI华丽，代码智能补全和重构无敌，还能接入AI插件。但它更针对软件工程与跨平台大项目，对国内传统的单片机生态并不是最顺手的。
-            </p>
+            <a href="https://www.jetbrains.com/clion/" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-700 dark:text-zinc-300 underline underline-offset-4">访问官网 ↗</a>
           </div>
-          <div class="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-xs text-zinc-500">
-            适合：软工专业同学、对编码美观与智能提示有执念的人。
-          </div>
+          <p class="text-base leading-8">
+            支持 Windows、macOS 和 Linux 的 C/C++ IDE，提供代码导航、补全、重构和调试功能。它可以配合不同编译器与构建系统；用于单片机项目时，还需要确认目标芯片工具链、下载方式和调试器配置。
+          </p>
+          <p class="text-base leading-8"><strong>适合：</strong>课程采用 CLion，或准备进一步学习跨平台项目与工程构建。先确认环境能跑通，再逐步了解项目配置。</p>
         </div>
 
-        <!-- Visual Studio (首推) -->
-        <div class="p-5 rounded-2xl border-2 border-amber-500/50 dark:border-amber-500/40 bg-amber-50/20 dark:bg-amber-950/20 backdrop-blur-sm shadow-sm flex flex-col justify-between relative overflow-hidden">
-          <div class="absolute top-0 right-0 px-3 py-1 bg-amber-500 text-white text-[10px] font-bold rounded-bl-xl">
-            新手首推
-          </div>
-          <div>
-            <div class="flex items-center justify-between mb-3 pr-16">
-              <div class="flex items-center space-x-3">
-                <img src="/embedded/bronze/image4.png" alt="Visual Studio" class="w-8 h-8 object-contain rounded" />
-                <div>
-                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Visual Studio</h3>
-                  <span class="text-[11px] text-amber-700 dark:text-amber-400 font-semibold">宇宙第一IDE · 新手最稳</span>
-                </div>
-              </div>
+        <div class="space-y-4 py-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img src="/embedded/bronze/image4.png" alt="" class="w-8 h-8 object-contain rounded" />
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Visual Studio</h3>
             </div>
-            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              开箱即用，装完直接开工，完全不需要新手去折腾令人头秃的环境变量与编译器路径。最关键的是，它和我们后续嵌入式要用的专业IDE（如 Keil、IAR）设计逻辑相通，而且全网初学者教程基本都以此为主，上手最顺畅！
-            </p>
+            <a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-700 dark:text-zinc-300 underline underline-offset-4">官网下载 ↗</a>
           </div>
-          <div class="mt-4 pt-3 border-t border-amber-500/20 flex items-center justify-between">
-            <span class="text-xs text-amber-800 dark:text-amber-300 font-medium">推荐装免费 Community 社区版</span>
-            <a
-              href="https://visualstudio.microsoft.com/zh-hans/vs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold transition shrink-0"
-            >
-              官网下载 ↗
-            </a>
-          </div>
+          <p class="text-base leading-8">
+            在 Windows 上跟随本篇课程，可以使用 Visual Studio。安装时选择<strong>“使用 C++ 的桌面开发”工作负载</strong>，以安装 C/C++ 所需工具。它把工程、构建和调试入口放在同一环境里，方便先练习语言基础。
+          </p>
+          <p class="text-base leading-8"><strong>版本与练习：</strong>Community 版适用于个人学习，其他用途应核对许可条款。编写 C 程序时使用 <code>.c</code> 文件，先验证编译、运行和断点调试都正常；之后转入 Keil、IAR 等环境时，仍要学习各自的目标配置。</p>
         </div>
 
-        <!-- VS Code -->
-        <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center space-x-3">
-                <img src="/embedded/bronze/image5.png" alt="VS Code" class="w-8 h-8 object-contain rounded" />
-                <div>
-                  <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">VS Code</h3>
-                  <span class="text-[11px] text-blue-600 dark:text-blue-400 font-medium">轻量编辑器 · 嵌入式终极形态</span>
-                </div>
-              </div>
-              <a
-                href="https://code.visualstudio.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-2.5 py-1 rounded-lg bg-blue-100/80 dark:bg-blue-950/60 hover:bg-blue-200 dark:hover:bg-blue-900/60 text-xs font-medium text-blue-700 dark:text-blue-300 transition shrink-0"
-              >
-                官网 ↗
-              </a>
+        <div class="space-y-4 py-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img src="/embedded/bronze/image5.png" alt="" class="w-8 h-8 object-contain rounded" />
+              <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">VS Code</h3>
             </div>
-            <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
-              很多人分不清它和 Visual Studio。它本身<strong>只是个文本编辑器</strong>，不能直接编译C语言，得自己配插件、配编译器（MinGW）、写 launch.json。虽然它是嵌入式高手的终极标配，但<strong>对新手极不友好</strong>，一旦配置报错能卡你一整天，建议后期熟练了再折腾。
-            </p>
+            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-700 dark:text-zinc-300 underline underline-offset-4">访问官网 ↗</a>
           </div>
-          <div class="mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 text-xs text-zinc-500">
-            建议：大一初学者先别碰环境配置，先用 Visual Studio 把C语言本体学会。
-          </div>
+          <p class="text-base leading-8">
+            VS Code 是编辑器，与 Visual Studio 是不同产品。C/C++ 扩展提供语言支持，但不附带编译器和调试器；需要安装或指定已有工具链，例如 GCC、Clang 或 MSVC，并配置构建与调试任务。
+          </p>
+          <p class="text-base leading-8"><strong>使用建议：</strong>课程有完整配置步骤，或你已经有可用环境时，可以直接用它。若当前卡在配置上，先采用课程的现成环境学 C，之后再了解 <code>tasks.json</code>、<code>launch.json</code> 和编译器路径。</p>
         </div>
       </div>
     </section>
 
-    <!-- 第二部分：学习路线与教程 -->
     <section class="space-y-6">
-      <div class="flex items-center space-x-3">
-        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
-        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          第二部分：学习资源与实战建议
-        </h2>
-      </div>
+      <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">第二部分：课程与练习安排</h2>
+      <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">参考课程：鹏哥 C 语言</h3>
+      <p class="text-base leading-8">
+        可以参考下面的 B 站课程，按章节练习。跟着视频写一遍后，关掉示例再独立完成一次；如果结果不同，用编译信息和断点找原因。已有其他合适课程时，也可以用本篇的过关标准检查进度。
+      </p>
+      <a href="https://www.bilibili.com/video/BV17a7K64ELH/" target="_blank" rel="noopener noreferrer" class="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
+        <div class="space-y-2 min-w-0">
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:underline underline-offset-4">鹏哥 C 语言：从入门到进阶</h3>
+          <p class="text-base leading-8">打开课程目录，从当前需要练习的章节开始。</p>
+        </div>
+        <span class="text-sm text-zinc-700 dark:text-zinc-300 shrink-0">前往 B 站 ↗</span>
+      </a>
 
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
-        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-          📺 推荐课程：B站【鹏哥C语言】
-        </h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          B站上的C语言教程很多，但我最推荐跟着<strong>鹏哥C语言</strong>来学。原因很简单：教学用具直接采用上面推荐的 Visual Studio，讲课细致，课后有代码练习，初学者完全不用担心跟不上。
+      <!-- 保留课程说明后的动图位置 -->
+      <div class="pt-4 flex flex-col items-center gap-4">
+        <p class="text-base leading-8">
+          课程可能很长，不需要把集数当成进度。原学习路线提到约第 127 集的指针内容，可作为查找章节的线索；课程目录会调整，应以<strong>能否独立使用数组、函数和基础指针</strong>为准。遇到没掌握的部分，就补练那一段。
         </p>
-
-        <!-- 课程外链卡片 -->
-        <a
-          href="https://www.bilibili.com/video/BV17a7K64ELH/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center justify-between p-4 rounded-xl bg-pink-50/40 dark:bg-pink-950/20 border border-pink-200/60 dark:border-pink-900/40 hover:bg-pink-100/50 transition group"
-        >
-          <div class="flex items-center space-x-3 min-w-0">
-            <span class="text-2xl">📺</span>
-            <div class="min-w-0">
-              <div class="font-bold text-sm text-zinc-900 dark:text-zinc-100 truncate">
-                【鹏哥C语言】从入门到进阶 完整版视频教程
-              </div>
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                B站现象级零基础C语言入门神课，点击直达观看 ↗
-              </p>
-            </div>
-          </div>
-          <span class="text-xs px-2.5 py-1 rounded bg-pink-500 text-white font-medium shrink-0 ml-3 group-hover:scale-105 transition">
-            前往学习
-          </span>
-        </a>
-
-        <!-- 200集吓哭动图 -->
-        <div class="pt-4 border-t border-zinc-200/60 dark:border-zinc-800/60 flex flex-col items-center">
-          <p class="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3 text-center">
-            打开一看是不是吓哭了？整整 200 集！不要慌，嵌入式其实只需要学到 <span class="text-amber-600 dark:text-amber-400 font-bold text-base">第 127 集左右</span> 搞懂指针就行了！
-          </p>
-          <div class="rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/50 shadow-sm max-w-xs">
-            <img src="/embedded/bronze/image6.GIF" alt="吓哭动图" class="w-full h-auto object-contain" />
-          </div>
-          <p class="text-xs text-zinc-400 mt-3 italic">
-            (╯°口°)╯︵ ┻━┻ 没办法，学技术任重而道远，耐住性子冲就完事了！
-          </p>
+        <div class="rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 max-w-xs">
+          <img src="/embedded/bronze/image6.GIF" alt="面对长课程的学习动图" class="w-full h-auto object-contain" loading="lazy" />
         </div>
+        <p class="text-base leading-8 text-zinc-600 dark:text-zinc-400">每次完成一个小练习，比连续看完很多集更容易发现自己的问题。</p>
       </div>
     </section>
 
-    <!-- 第三部分：三阶段极简目标 -->
     <section class="space-y-6">
-      <div class="flex items-center space-x-3">
-        <div class="w-2 h-7 bg-amber-600 rounded-full"></div>
-        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          第三部分：青铜篇核心过关标准
-        </h2>
-      </div>
-
-      <div class="space-y-3">
-        <div class="flex items-start space-x-3 p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40">
-          <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300 shrink-0">第 1 阶段</span>
-          <div class="text-xs text-zinc-600 dark:text-zinc-300">
-            <strong class="text-zinc-900 dark:text-zinc-100 text-sm block mb-1">控制流程与循环语句</strong>
-            熟练掌握 <code>for</code>、<code>while</code>、<code>if-else</code>、<code>switch-case</code>，搞懂程序的基本逻辑流。
-          </div>
-        </div>
-
-        <div class="flex items-start space-x-3 p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40">
-          <span class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-xs font-bold text-zinc-700 dark:text-zinc-300 shrink-0">第 2 阶段</span>
-          <div class="text-xs text-zinc-600 dark:text-zinc-300">
-            <strong class="text-zinc-900 dark:text-zinc-100 text-sm block mb-1">数组与模块化函数</strong>
-            能够拆分逻辑写函数，能够独立完成类似“三子棋”、“石头剪刀布”这样的小终端程序。
-          </div>
-        </div>
-
-        <div class="flex items-start space-x-3 p-4 rounded-xl border-2 border-amber-500/40 bg-amber-50/20 dark:bg-amber-950/20">
-          <span class="px-2.5 py-1 rounded-md bg-amber-500 text-white text-xs font-bold shrink-0">第 3 阶段</span>
-          <div class="text-xs text-zinc-700 dark:text-zinc-300">
-            <strong class="text-amber-800 dark:text-amber-300 text-sm block mb-1">指针与内存基础（核心分水岭）</strong>
-            搞懂内存地址、指针变量、指针传参，掌握到这里，恭喜你——你已经有资格跨进真正的单片机实操大门了！
-          </div>
-        </div>
-      </div>
+      <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">第三部分：三个阶段的过关标准</h2>
+      <ol class="space-y-6 list-decimal pl-6">
+        <li class="pl-2 space-y-3">
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">控制流程与循环语句</h3>
+          <p class="text-base leading-8">掌握 <code>for</code>、<code>while</code>、<code>if-else</code>、<code>switch-case</code>，能读出执行顺序，并独立写出带判断与循环的小程序。</p>
+        </li>
+        <li class="pl-2 space-y-3">
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">数组与函数</h3>
+          <p class="text-base leading-8">能用数组保存数据，把输入、处理和输出拆成函数。独立完成“三子棋”或“石头剪刀布”这样的终端程序，并能解释各函数的作用。</p>
+        </li>
+        <li class="pl-2 space-y-3">
+          <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">指针与内存基础</h3>
+          <p class="text-base leading-8">理解内存地址、指针变量与指针传参，能说明一个指针指向什么，并在练习中避免空指针解引用与数组越界。接触单片机后，再结合实际代码继续学习结构体、位运算和 <code>volatile</code> 等内容。</p>
+        </li>
+      </ol>
     </section>
 
-    <!-- 尾声进阶与动图 -->
-    <section class="border-t border-zinc-200/80 dark:border-zinc-800/80 pt-8 text-center space-y-6">
+    <section class="border-t border-zinc-200 dark:border-zinc-800 pt-8 text-center space-y-6">
       <div>
-        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-          完成以上三阶段，即可昂首迈入【白银阶段】！
-        </h3>
-        <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-          白银篇，我们将正式拿起单片机与元器件，开启真正的软硬件交互。
-        </p>
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">完成基础练习，进入白银篇</h2>
+        <p class="mt-3 text-base leading-8">能独立编写、运行并调试这些小程序后，就可以开始单片机与元器件实践，边做边补充语言知识。</p>
       </div>
-
-      <!-- 原文档对应尾部动图 -->
       <div class="flex justify-center my-4">
-        <div class="rounded-2xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/50 shadow-sm max-w-xs">
-          <img src="/embedded/bronze/image7.GIF" alt="白银进阶" class="w-full h-auto object-contain" />
+        <div class="rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 max-w-xs">
+          <img src="/embedded/bronze/image7.GIF" alt="进入白银篇的进阶动图" class="w-full h-auto object-contain" loading="lazy" />
         </div>
       </div>
+      <a href="/embedded/silver" class="inline-flex items-center gap-2 text-base font-medium text-zinc-900 dark:text-zinc-100 underline underline-offset-4">继续阅读白银篇 <span aria-hidden="true">→</span></a>
     </section>
   </article>
 </BaseLayout>
-

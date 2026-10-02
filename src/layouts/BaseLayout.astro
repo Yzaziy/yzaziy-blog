@@ -9,8 +9,7 @@ interface Props {
   title: string;
   description?: string;
 }
-
-const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
+const { title, description = 'Yzaziy 的学习与开发笔记' } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,123 +20,101 @@ const { title, description = 'Yzaziy 的个人博客与主页' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <!-- Astro 客户端路由（实现页面无刷新切换、背景持续连贯加载） -->
     <ClientRouter />
     <script is:inline>
-      function getDesiredTheme() {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      }
-
       function applySavedTheme(doc = document) {
-        const theme = getDesiredTheme();
-        if (theme === 'dark') {
-          doc.documentElement.classList.add('dark');
-        } else {
-          doc.documentElement.classList.remove('dark');
-        }
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        const dark = theme === 'dark' || (theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        doc.documentElement.classList.toggle('dark', dark);
       }
-
-      // 1. 首屏加载瞬间应用
       applySavedTheme();
-
-      // 2. 关键核心修复：在 DOM 切换前直接给新文档预先加上 dark class，彻底杜绝单帧白屏闪烁
-      document.addEventListener('astro:before-swap', (event) => {
-        applySavedTheme(event.newDocument);
-      });
+      document.addEventListener('astro:before-swap', (event) => applySavedTheme(event.newDocument));
       document.addEventListener('astro:after-swap', () => applySavedTheme());
-      document.addEventListener('astro:page-load', () => applySavedTheme());
     </script>
   </head>
-  <body class="flex flex-col min-h-screen relative text-zinc-900 dark:text-zinc-100 antialiased">
-    <!-- 全局持久化动态背景视频（transition:persist 实现切页不间断、不闪烁） -->
-    <div
-      id="bg-video-wrapper"
-      transition:persist
-      class="fixed inset-0 -z-50 overflow-hidden pointer-events-none select-none"
-    >
-      <video
-        id="bg-video"
-        autoplay
-        loop
-        muted
-        playsinline
-        preload="auto"
-        class="absolute inset-0 w-full h-full object-cover filter blur-[5px] scale-105 transform-gpu"
-      >
+  <body>
+    <a class="skip-link" href="#main-content">跳到正文</a>
+    <div id="bg-video-wrapper" transition:persist class="site-background" aria-hidden="true">
+      <video id="bg-video" autoplay loop muted playsinline preload="auto">
         <source src="/bg-video.mp4" type="video/mp4" />
       </video>
-      <!-- 磨砂半透明遮罩 -->
-      <div class="absolute inset-0 bg-white/75 dark:bg-zinc-950/80 backdrop-blur-[1px]"></div>
+      <div class="site-backdrop"></div>
     </div>
 
-    <!-- 顶部导航 -->
     <Header />
-
-    <!-- 桌面端侧边栏（采用 fixed 彻底永远钉死在视口左侧 top-16，无论滑到多底、是否触及 footer，绝不动摇丝毫） -->
-    <aside
-      id="sidebar-desktop-container"
-      class="hidden md:flex fixed top-16 left-0 bottom-0 w-72 z-30 flex-col border-r border-zinc-200/70 dark:border-zinc-800/70 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-md transition-all"
-      transition:persist="sidebar-desktop"
-    >
+    <aside id="sidebar-desktop-container" class="desktop-sidebar" transition:persist="sidebar-desktop">
       <Sidebar />
     </aside>
 
-    <!-- 移动端侧边抽屉 -->
-    <div id="mobile-sidebar-drawer" class="fixed inset-0 z-50 hidden md:hidden">
-      <div id="mobile-sidebar-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"></div>
-      <div class="fixed inset-y-0 left-0 w-72 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-xl flex flex-col z-10 border-r border-zinc-200/80 dark:border-zinc-800/80">
-        <div class="p-4 border-b border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
-          <span class="font-bold text-zinc-900 dark:text-zinc-100">分类导航</span>
-          <button id="close-mobile-sidebar" class="p-1 rounded-md text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="关闭侧边栏">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div class="flex-1 overflow-y-auto sidebar-scroll">
-          <Sidebar />
-        </div>
+    <dialog id="mobile-sidebar-drawer" class="mobile-sidebar-drawer" aria-labelledby="mobile-nav-title">
+      <div class="mobile-sidebar-header">
+        <h2 id="mobile-nav-title">分类导航</h2>
+        <button id="close-mobile-sidebar" class="icon-button" aria-label="关闭侧边栏">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-width="1.7" d="m6 6 12 12M6 18 18 6" /></svg>
+        </button>
       </div>
-    </div>
+      <Sidebar />
+    </dialog>
 
-    <!-- 页面滚动主视图（md:pl-72 为左侧固定侧边栏提供稳定专属空间） -->
-    <div class="flex-grow flex flex-col w-full md:pl-72 relative z-10">
-      <!-- 主内容区域（确保所有内容与交互均在最上层） -->
-      <main class="flex-grow min-w-0 px-4 sm:px-10 py-10 max-w-4xl mx-auto w-full relative z-10">
+    <div class="site-content">
+      <main id="main-content" class="page-content" tabindex="-1">
         <slot />
       </main>
-
-      <!-- 底部信息 -->
       <Footer />
     </div>
 
-    <script is:inline>
+    <script>
       function initAppInteractions() {
-        const toggleBtn = document.getElementById('mobile-sidebar-toggle');
-        const drawer = document.getElementById('mobile-sidebar-drawer');
-        const closeBtn = document.getElementById('close-mobile-sidebar');
-        const backdrop = document.getElementById('mobile-sidebar-backdrop');
+        const toggle = document.getElementById('mobile-sidebar-toggle');
+        const drawer = document.getElementById('mobile-sidebar-drawer') as HTMLDialogElement;
+        const close = document.getElementById('close-mobile-sidebar');
+        if (toggle) toggle.onclick = () => {
+          drawer.showModal();
+          toggle.setAttribute('aria-expanded', 'true');
+        };
+        if (close) close.onclick = () => drawer.close();
+        drawer.onclose = () => toggle?.setAttribute('aria-expanded', 'false');
+        drawer.onclick = (event) => {
+          if (event.target === drawer || (event.target as Element).closest('a')) drawer.close();
+        };
 
-        if (toggleBtn) toggleBtn.onclick = () => drawer?.classList.remove('hidden');
-        if (closeBtn) closeBtn.onclick = () => drawer?.classList.add('hidden');
-        if (backdrop) backdrop.onclick = () => drawer?.classList.add('hidden');
+        document.querySelectorAll<HTMLAnchorElement>('.header-nav-link').forEach((link) => {
+          const path = location.pathname.replace(/\/$/, '') || '/';
+          if ((new URL(link.href).pathname.replace(/\/$/, '') || '/') === path) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
 
-        // 确保持久化视频始终处于播放状态
-        const video = document.getElementById('bg-video');
-        if (video && video.paused) {
-          video.play().catch(() => {});
-        }
+        const video = document.getElementById('bg-video') as HTMLVideoElement;
+        const button = document.getElementById('background-toggle');
+        const updateVideoUI = () => {
+          const label = video.paused ? '播放背景视频' : '暂停背景视频';
+          button?.setAttribute('aria-label', label);
+          button?.setAttribute('title', label);
+          button?.setAttribute('aria-pressed', String(video.paused));
+          document.getElementById('background-pause-icon')?.classList.toggle('hidden', video.paused);
+          document.getElementById('background-play-icon')?.classList.toggle('hidden', !video.paused);
+        };
+        let preference;
+        try { preference = localStorage.getItem('background-paused'); } catch {}
+        const pause = preference === 'true' || (!preference && matchMedia('(prefers-reduced-motion: reduce)').matches);
+        if (pause) video.pause();
+        else video.play().catch(updateVideoUI);
+        video.onplay = updateVideoUI;
+        video.onpause = updateVideoUI;
+        updateVideoUI();
+        if (button) button.onclick = () => {
+          const pause = !video.paused;
+          try { localStorage.setItem('background-paused', String(pause)); } catch {}
+          if (pause) video.pause();
+          else video.play().catch(updateVideoUI);
+          updateVideoUI();
+        };
       }
-
-      initAppInteractions();
       document.addEventListener('astro:page-load', initAppInteractions);
+      matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+        if (event.matches) (document.getElementById('mobile-sidebar-drawer') as HTMLDialogElement)?.close();
+      });
     </script>
   </body>
 </html>
-

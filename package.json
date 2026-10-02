@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "check": "npm run build && node scripts/check-site.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

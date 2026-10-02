@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="【白银篇】STM32标准库实战开发与进阶路线 | 嵌入式入门"
-  description="嵌入式入门第三站：告别纯语法，正式进入单片机软硬件世界。涵盖江协STM32套件选型、避坑指南、5大阶梯性融合实战与第一块PCB打板。"
+  title="【白银篇】STM32 标准库实战开发指南 | 嵌入式入门"
+  description="嵌入式入门第三站：准备 STM32 套件与开发工具，通过 5 个阶段练习外设、串口通信与 PCB 制作，再选择自己的进阶方向。"
 >
-  <article class="max-w-3xl mx-auto space-y-12">
+  <article class="tutorial max-w-3xl mx-auto space-y-12 text-base leading-8">
     <!-- 面包屑导航 -->
-    <nav class="flex items-center space-x-2 text-xs text-zinc-500 dark:text-zinc-400">
+    <nav class="breadcrumbs flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400" aria-label="面包屑">
       <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
       <span>/</span>
       <span>嵌入式入门</span>
@@ -19,42 +19,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </nav>
 
     <!-- 头部信息 -->
-    <header class="border-b border-zinc-200/80 dark:border-zinc-800/80 pb-8">
-      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-500/10 text-zinc-700 dark:text-zinc-300 text-xs font-semibold mb-4 border border-zinc-500/20">
+    <header class="article-header border-b border-zinc-200/80 dark:border-zinc-800/80 pb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-500/10 text-zinc-700 dark:text-zinc-300 text-sm font-semibold mb-4 border border-zinc-500/20">
         <img src="/ranks/silver.png" alt="白银" class="w-4 h-4 object-contain" />
         <span>阶段 03 · 白银进阶</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-        【白银篇】STM32标准库实战开发指南
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+        【白银篇】STM32 标准库实战开发指南
       </h1>
-      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        很多刚接触单片机的朋友常问：<strong>“我不应该先学51单片机吗？”</strong><br />
-        这里说句大实话：51确实太老了，性能和外设早跟不上主流需求。至于为什么有些厂子还在用？纯粹是因为它几毛钱一片足够便宜，而且几十年架构太成熟稳定了。嵌入式界有句至理名言：<strong>“只要它还能跑，就千万别动它，哪怕没人知道它是怎么跑起来的。”</strong>
-        因此作为新手，直接从 32 位 STM32 起步才是性价比最高、视野最正的选择。
+      <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-8">
+        <strong>“要先学 51 单片机，再学 STM32 吗？”</strong> 如果学校或手头的项目要求用 51，就按实际需要学习。这条路线直接从 STM32 开始，跟着同一套课程熟悉硬件和程序，不必先绕一圈。<br /><br />
+        这一站会用到开发板、屏幕、按键和电机，也会尝试画一张 PCB。每学完一组外设，就做一个能看见反馈的小作品。先让它跑起来，再慢慢弄明白为什么这样写 (ง •_•)ง。
       </p>
     </header>
 
     <!-- 硬件与开发软件准备 -->
     <section class="space-y-6">
       <div class="flex items-center space-x-3">
-        <div class="w-2 h-7 bg-zinc-500 rounded-full"></div>
-        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+        <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
           第一部分：硬件套件与开发工具
         </h2>
       </div>
 
       <!-- 硬件购买卡片 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-            🛒 硬件套件推荐：江协 STM32 套件
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-4">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">
+            硬件套件推荐：江协 STM32 套件
           </h3>
-          <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 font-medium border border-amber-500/20">
-            入门必备
+          <span class="text-sm px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 font-medium border border-amber-500/20">
+            对照课程准备
           </span>
         </div>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          正式开搞嵌入式，得有一套称手的元器件。建议直接买<strong>江协老师同款 STM32 套件</strong>。无论是在 B 站还是各大电商平台价格都差不太多，虽然要小花一笔，但这是搞硬件必经的“肉痛环节”。
+        <p class="text-base text-zinc-600 dark:text-zinc-400 leading-8">
+          建议对照<strong>江协科技 STM32 课程的套件清单</strong>准备器件，方便跟着例程接线。已经有开发板的同学可以先核对型号与模块，再补齐缺少的部分，不必重复购买。
         </p>
         <div class="flex justify-center py-2">
           <div class="rounded-xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 max-w-sm shadow-sm">
@@ -63,53 +61,52 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- 软件MDK吐槽与提示 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
+      <!-- 开发软件准备 -->
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-4">
         <div class="flex items-center space-x-3">
           <img src="/embedded/silver/image2.png" alt="Keil MDK" class="w-8 h-8 object-contain rounded" />
           <div>
-            <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">Keil MDK（单片机权威老祖宗）</h3>
-            <span class="text-xs text-zinc-400">工业界标配 · 原始人体验</span>
+            <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">Keil MDK：先跟课程完成一次开发流程</h3>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400">建立工程 · 编译 · 下载 · 调试</span>
           </div>
         </div>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          刚从 VS / 现代编辑器过来的同学可能要傻眼了——你将瞬间从现代文明掉回原始人时代。这个绿油油图标的 MDK 是所有单片机最权威的“老爹”，界面二十年如一日的古董复古，不支持原生中文，报错有时候还很抽象。但别嫌弃，几乎所有嵌入式工程师都是靠它长大的。
+        <p class="text-base text-zinc-600 dark:text-zinc-400 leading-8">
+          用惯 VS 或其他编辑器后，初次打开 Keil MDK 可能会不太习惯。这一阶段先与课程保持一致，把工程建立、编译、下载和调试流程走通。遇到报错，记下完整信息和发生的步骤，比反复重装更方便定位问题。
         </p>
 
-        <!-- 原始人动图 -->
+        <!-- 开发工具趣味动图 -->
         <div class="flex justify-center py-2">
           <div class="rounded-xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 max-w-xs shadow-sm">
-            <img src="/embedded/silver/image3.gif" alt="原始人体验" class="w-full h-auto object-contain" />
+            <img src="/embedded/silver/image3.gif" alt="初次使用开发工具时的心情" class="w-full h-auto object-contain" />
           </div>
         </div>
       </div>
 
       <!-- 推荐课程卡片 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
-        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-          📺 推荐课程：B站【江协科技】STM32 入门教程
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-4">
+        <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">
+          推荐课程：B站【江协科技】STM32 入门教程
         </h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          江协老师的课程虽然长，但绝对不枯燥！课件极其细致生动，先讲通硬件底层原理，紧接着就带着你动手做实验，每学完一节都有实打实的动静和反馈。
+        <p class="text-base text-zinc-600 dark:text-zinc-400 leading-8">
+          建议按章节学习江协科技的 STM32 入门教程：先看原理与接线，再运行例程。课程较长，不必一口气看完；完成一节实验后，改一个参数或加一个小功能，确认自己理解了它的作用。
         </p>
         <a
           href="https://www.bilibili.com/video/BV1th411z7sn/"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-between p-4 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 hover:bg-blue-100/50 transition group"
+          class="flex flex-wrap items-start justify-between gap-3 p-4 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 hover:bg-blue-100/50 transition group"
         >
           <div class="flex items-center space-x-3 min-w-0">
-            <span class="text-2xl">📺</span>
             <div class="min-w-0">
-              <div class="font-bold text-sm text-zinc-900 dark:text-zinc-100 truncate">
+              <div class="font-semibold text-sm text-zinc-900 dark:text-zinc-100 break-words">
                 【STM32入门教程-2023版 细致讲解 中文字幕】江协科技
               </div>
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                B站口碑天花板级 STM32 教学，点击直接跳转观看 ↗
+              <p class="text-base text-zinc-500 dark:text-zinc-400 mt-0.5">
+                原理讲解与配套实验，前往 B 站观看 ↗
               </p>
             </div>
           </div>
-          <span class="text-xs px-2.5 py-1 rounded bg-blue-600 text-white font-medium shrink-0 ml-3 group-hover:scale-105 transition">
+          <span class="text-sm px-2.5 py-1 rounded bg-blue-600 text-white font-medium shrink-0 ml-3 transition">
             前往学习
           </span>
         </a>
@@ -117,16 +114,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
       <!-- 避坑指南 -->
       <div class="p-5 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/20 space-y-3">
-        <h3 class="font-bold text-base text-amber-800 dark:text-amber-300 flex items-center space-x-2">
-          <span>⚠️ 踩坑血泪经验（认真看）</span>
+        <h3 class="font-semibold text-base text-amber-800 dark:text-amber-300 flex items-center space-x-2">
+          <span>开始实验前，先检查这几件事</span>
         </h3>
-        <ul class="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 space-y-2 list-disc list-inside leading-relaxed">
-          <li><strong>版本一致性</strong>：尽量用老师资料里给的 MDK 和库版本，版本不一致经常引发各种莫名其妙的玄学报错（亲身经历！）。</li>
-          <li><strong>防烧板提醒</strong>：程序下载失败，先摸排插头松紧和杜邦线线序。<strong>电源和地如果接反有大概率直接烧毁芯片</strong>，接线时多看两眼。</li>
-          <li><strong>丢掉劣质杜邦线</strong>：盒子里那种长得像彩虹排线的廉价公对公杜邦线尽量扔一边，接触不良能折磨你两小时，用盒子里单独配的硬插线。</li>
-          <li><strong>杀毒软件警告</strong>：安装 Keil 和芯片包驱动时，<strong>把电脑上所有杀毒软件和 Windows 防火墙暂时关掉</strong>，否则各种驱动补丁容易被暗中拦截。</li>
-          <li><strong>排查顺序</strong>：代码完全抄老师的依然不灵？先拿老师现成的 hex 固件烧录。如果老师的固件也跑不起来，果断查硬件松动和电源。</li>
-          <li><strong>善用 AI 辅助</strong>：遇到不懂的寄存器或报错信息，直接扔给 AI 帮你分析原因，但<strong>千万别直接让 AI 帮你无脑代写代码</strong>，那只会害了自己。</li>
+        <ul class="text-base text-zinc-700 dark:text-zinc-300 space-y-2 list-disc list-inside leading-8">
+          <li><strong>版本与来源</strong>：先核对课程使用的 MDK、芯片包和库版本，从官网获取安装程序。安装被拦截时查看安全软件的提示与保护历史，<strong>不要为了安装而关闭全部防护或防火墙</strong>。可参考<a href="https://support.microsoft.com/en-us/windows/security/threat-malware-protection/virus-and-threat-protection-in-the-windows-security-app" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Windows 安全中心说明</a>。</li>
+          <li><strong>通电前检查</strong>：核对电源、地线、模块电压和杜邦线顺序。接反电源可能损坏器件；改接线前先断电。</li>
+          <li><strong>接触是否可靠</strong>：松动的杜邦线会让实验时好时坏。先检查插头，再换一根可靠的线；面包板上也可以使用套件里的硬插线。</li>
+          <li><strong>排查顺序</strong>：如果自己的程序没有预期效果，可先下载与当前板子匹配的课程 hex 固件作对照。若仍无法运行，优先检查供电、接线和下载器连接。</li>
+          <li><strong>AI 辅助</strong>：把完整报错、相关代码和芯片型号一起提供给 AI，请它解释或提出排查思路。寄存器与接线建议要回到手册核对，代码修改后要实际运行验证。</li>
         </ul>
       </div>
     </section>
@@ -134,28 +130,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <!-- 第二部分：5大阶梯性融合实战任务 -->
     <section class="space-y-6">
       <div class="flex items-center space-x-3">
-        <div class="w-2 h-7 bg-zinc-500 rounded-full"></div>
-        <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-          第二部分：告别抄代码！5个阶梯融合实战
+        <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+          第二部分：把外设串起来，做 5 个阶段练习
         </h2>
       </div>
-      <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-        光跟着视频 1:1 照抄打卡，学完也是脑子一片空白。我把课程外设串联成 5 个小实战项目，必须自己把不同章节的模块糅合起来：
+      <p class="text-base text-zinc-600 dark:text-zinc-400 leading-8">
+        跟着例程跑通之后，试着把不同章节的模块组合起来。下面的 5 个阶段练习按课程进度展开：遇到卡点可以回看相关章节，再回到自己的工程继续做。
       </p>
 
       <!-- 阶段一：C4模拟 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-            🎯 阶段一：CS:GO 风格 C4 定时炸弹模拟
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-3">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">
+            阶段一：CS:GO 风格 C4 倒计时模拟
           </h3>
-          <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">学完 4-2 即可开搞</span>
+          <span class="text-sm px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">学完 4-2 后尝试</span>
         </div>
-        <div class="text-xs text-zinc-600 dark:text-zinc-300 space-y-1">
+        <div class="text-base text-zinc-600 dark:text-zinc-300 space-y-1">
           <p><strong>所需模块</strong>：蜂鸣器、LED 灯、OLED 屏幕、轻触按键。</p>
-          <p><strong>实现效果</strong>：初始屏幕显示倒计时 10；按下按键激活，屏幕开始倒数，LED 开始闪烁；倒计时越短，闪烁越急促、蜂鸣器滴滴声频率越快；时间归零瞬间蜂鸣器长鸣，屏幕显示大大的 <strong>BOOM！</strong></p>
+          <p><strong>实现效果</strong>：屏幕初始显示倒计时 10；按下按键后开始倒数，LED 同时闪烁。剩余时间越短，LED 闪烁和蜂鸣器提示越急促；归零时蜂鸣器长鸣，屏幕显示 <strong>BOOM！</strong></p>
         </div>
-        <p class="text-xs text-zinc-400 italic">（顺带复习了C语言循环与延时，做完成就感直接拉满！）</p>
+        <p class="text-base text-zinc-500 dark:text-zinc-400">这个练习也能复习 C 语言循环与延时。先做固定节奏，再加上逐渐加快的效果。</p>
         <div class="flex justify-center py-2">
           <div class="rounded-xl overflow-hidden border border-zinc-200/80 dark:border-zinc-800/80 max-w-xs shadow-sm">
             <img src="/embedded/silver/image4.gif" alt="C4模拟效果" class="w-full h-auto object-contain" />
@@ -164,29 +159,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       <!-- 阶段二：旋钮控制舵机，按键控制电机 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-            🎯 阶段二：旋钮舵机云台与调速电机
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-3">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">
+            阶段二：旋钮舵机云台与调速电机
           </h3>
-          <span class="text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">学完 6-4 即可开搞</span>
+          <span class="text-sm px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">学完 6-4 后尝试</span>
         </div>
-        <div class="text-xs text-zinc-600 dark:text-zinc-300 space-y-1">
+        <div class="text-base text-zinc-600 dark:text-zinc-300 space-y-1">
           <p><strong>所需模块</strong>：OLED 屏幕、按键、电位器旋钮、舵机、直流电机、驱动板。</p>
-          <p><strong>实现效果</strong>：屏幕实时显示舵机当前角度和电机档位；转动旋钮，舵机随角度精准旋转；按动按键逐级提升电机转速，升至满档后重置归零。</p>
+          <p><strong>实现效果</strong>：屏幕实时显示舵机角度和电机档位；转动旋钮，舵机随之转动；按动按键逐级提升电机转速，升至满档后重置归零。先分别调通舵机与电机，再把它们整合到同一个工程。</p>
         </div>
       </div>
 
       <!-- 阶段三：绘制你的第一张 PCB 电路板 -->
-      <div class="p-5 rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/10 dark:bg-emerald-950/20 backdrop-blur-sm space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100 flex items-center space-x-2">
-            <span>🎯 阶段三：告别杜邦线 —— 亲手做一张 USB 扩展坞 PCB</span>
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-4">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100 flex items-center space-x-2">
+            <span>阶段三：画一张 USB 扩展坞 PCB</span>
           </h3>
-          <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-semibold">核心技能分水岭</span>
+          <span class="text-sm px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 font-medium border border-emerald-200 dark:border-emerald-800">从接线到画板</span>
         </div>
-        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-          面包板虽然适合早期搭电路，但杜邦线松动、容易虚接的毛病想必已经让你痛不欲生。实际工程产品全都是定制 PCB！本阶段目标：<strong>用国产免费的嘉立创 EDA 画一块属于自己的 USB 扩展坞电路板并免费打样焊接出来</strong>，为下一个实战阶段做准备！
+        <p class="text-base text-zinc-600 dark:text-zinc-300 leading-8">
+          面包板适合快速试验，PCB 则让连接更固定。这一阶段用<strong>嘉立创 EDA 画一张 USB 扩展坞电路板，完成打样与焊接</strong>，为后面的串口实验整理连接。下单前核对尺寸、元件封装和平台当前的打样规则，费用与优惠以实际订单为准。
         </p>
 
         <!-- 工具与教程 -->
@@ -195,13 +190,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             href="https://lceda.cn/page/download?jspm=lceda.hm.xl.xz"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 hover:border-emerald-500 transition"
+            class="flex flex-wrap items-start justify-between gap-3 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 hover:border-emerald-500 transition"
           >
             <div class="flex items-center space-x-3">
               <img src="/embedded/silver/image5.png" alt="嘉立创EDA" class="w-7 h-7 object-contain" />
               <div>
-                <div class="text-xs font-bold text-zinc-900 dark:text-zinc-100">嘉立创 EDA 专业版</div>
-                <div class="text-[11px] text-zinc-400">国产完全免费 · 软件下载 ↗</div>
+                <div class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">嘉立创 EDA 专业版</div>
+                <div class="text-sm text-zinc-500 dark:text-zinc-400">前往官网下载安装 ↗</div>
               </div>
             </div>
           </a>
@@ -210,21 +205,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             href="https://www.bilibili.com/video/BV1XRhyzGE2E"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 hover:border-emerald-500 transition"
+            class="flex flex-wrap items-start justify-between gap-3 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 hover:border-emerald-500 transition"
           >
             <div class="flex items-center space-x-3">
-              <span class="text-xl">📺</span>
               <div>
-                <div class="text-xs font-bold text-zinc-900 dark:text-zinc-100">零基础 PCB 入门视频</div>
-                <div class="text-[11px] text-zinc-400">国一学长保姆级教学 ↗</div>
+                <div class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">零基础 PCB 入门视频</div>
+                <div class="text-sm text-zinc-500 dark:text-zinc-400">跟着示例完成第一张板 ↗</div>
               </div>
             </div>
           </a>
         </div>
 
         <!-- 小技巧与螺丝外壳实物图 -->
-        <div class="p-3 rounded-xl bg-zinc-100/60 dark:bg-zinc-800/40 text-xs text-zinc-600 dark:text-zinc-300">
-          💡 <strong>颜值加分小技巧</strong>：画板子时在四角预留 M3 螺丝孔位，再额外打一块尺寸相同的顶板，网购几根铜柱和螺丝组合起来，就能做成一个工业风满满的亚克力/裸板外壳！
+        <div class="p-3 rounded-xl bg-zinc-100/60 dark:bg-zinc-800/40 text-base text-zinc-600 dark:text-zinc-300">
+          <strong>可选的外壳做法</strong>：画板时在四角预留 M3 螺丝孔位，再做一块尺寸相同的顶板，用铜柱和螺丝组合成裸板外壳；也可以按尺寸准备亚克力顶板。画孔位前先核对手头螺丝和铜柱的尺寸。
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -238,16 +232,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       <!-- 阶段四：串口通信 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-3">
-        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-          🎯 阶段四：串口通信与上位机交互
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-3">
+        <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">
+          阶段四：串口通信与上位机交互
         </h3>
-        <div class="text-xs text-zinc-600 dark:text-zinc-300 space-y-1">
+        <div class="text-base text-zinc-600 dark:text-zinc-300 space-y-1">
           <p><strong>所需模块</strong>：CH340 USB转串口模块、3 色 LED 灯、OLED 屏幕。</p>
           <p><strong>实现效果</strong>：电脑端通过串口助手发送文本指令（如 <code>[LED_RED OFF]</code>），板端收到后熄灭红灯，并向上位机回传当前状态字符串（如 <code>[LED_RED OFF; LED_BLUE ON; LED_GREEN ON]</code>）。</p>
         </div>
-        <p class="text-xs text-zinc-500 leading-relaxed">
-          这时候如果做好了上一阶段的 USB 扩展坞，你就会发现妙处：电脑只需要引出一个 USB 口，就能把 ST-Link 烧录器和 CH340 模块稳稳全插上，工位再也不会乱成一团麻！
+        <p class="text-base text-zinc-500 dark:text-zinc-400 leading-8">
+          上一阶段的 USB 扩展坞可以把 ST-Link 下载器和 CH340 模块集中接到一个电脑 USB 口，便于同时下载程序和观察串口输出，也让桌面接线更容易整理。
         </p>
 
         <div class="flex justify-center py-2">
@@ -258,46 +252,46 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
         <!-- 蓝牙扩展 -->
         <div class="mt-3 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-zinc-800 dark:text-zinc-200">📶 进阶选做：无线蓝牙串口控制</span>
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">进阶选做：无线蓝牙串口控制</span>
             <a
               href="https://serial.keysking.com/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xs text-emerald-600 dark:text-emerald-400 font-medium hover:underline"
+              class="text-sm text-emerald-600 dark:text-emerald-400 font-medium hover:underline"
             >
-              波特律动串口助手（网页端直开） ↗
+              波特律动串口助手 ↗
             </a>
           </div>
-          <p class="text-xs text-zinc-500">
-            额外淘一个 HC-05 或 JDY-31 蓝牙模块，把有线串口替换为手机无线蓝牙遥控，上位机换用波特律动串口助手，体验直接升维。
+          <p class="text-base text-zinc-500 dark:text-zinc-400">
+            可以增加 HC-05 或 JDY-31 蓝牙模块，尝试把有线控制改成手机蓝牙遥控。先核对模块的接线、供电及手机端兼容性；电脑端调试可使用波特律动串口助手，手机端选择与模块匹配的蓝牙串口应用。
           </p>
         </div>
       </div>
 
       <!-- 阶段五：毕业通关与未来分支 -->
-      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 backdrop-blur-sm space-y-4">
-        <h3 class="font-bold text-base text-zinc-900 dark:text-zinc-100">
-          🎯 阶段五：融会贯通与毕业设计选项
+      <div class="p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 space-y-4">
+        <h3 class="font-semibold text-base text-zinc-900 dark:text-zinc-100">
+          阶段五：完成剩余课程，开始独立作品
         </h3>
-        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          完成剩下的课程内容，说明单片机的核心外设（GPIO、定时器、PWM、中断、ADC、USART、I2C）以及其他的功能你已全部吃透，随时可以开始独立做完整作品！接下来推荐 2 个进阶分支：
+        <p class="text-base text-zinc-600 dark:text-zinc-400 leading-8">
+          接着<strong>完成剩下的课程内容</strong>，把 GPIO、定时器、PWM、中断、ADC、USART、I2C，以及课程中的其他功能都练习一遍。用一个小工程自查：能否独立接线、选择需要的外设、读懂初始化代码，并排查常见问题？还有不熟悉的部分就回看对应章节。具备这些基础后，可以开始独立做完整作品，边做边补齐经验。接下来推荐 2 个进阶分支：
         </p>
 
         <div class="space-y-3">
           <!-- 分支 1 -->
           <div class="p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/40 border border-zinc-200/60 dark:border-zinc-700/60">
-            <div class="text-xs font-bold text-zinc-900 dark:text-zinc-100 mb-1">
-              选项 A：经典复刻 —— 桌面智能宠物（曼波小狗）
+            <div class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
+              选项 A：复刻桌面智能宠物（曼波小狗）
             </div>
-            <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-              全离线舵机步进机械结构 + 屏幕表情 + 音频反馈，集大成的优秀入门级开源小项目。
+            <p class="text-base text-zinc-500 dark:text-zinc-400 mb-2">
+              把离线舵机步进机械结构、屏幕表情和音频反馈组合起来。先按教程复刻，再增加一个自己的动作或交互。
             </p>
             <a
               href="https://www.bilibili.com/video/BV1At421h7Ui/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-xs text-blue-600 dark:text-blue-400 font-medium hover:underline"
+              class="text-sm text-blue-600 dark:text-blue-400 font-medium hover:underline"
             >
               【STM32智能桌面宠物总教程】B站直达 ↗
             </a>
@@ -305,11 +299,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
           <!-- 分支 2 -->
           <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20">
-            <div class="text-xs font-bold text-amber-800 dark:text-amber-300 mb-1">
-              选项 B：更进一步 —— 跨入【黄金篇】与【白金篇】连接 AI 时代
+            <div class="text-sm font-semibold text-amber-800 dark:text-amber-300 mb-1">
+              选项 B：继续学习 HAL 库与联网开发
             </div>
-            <p class="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              纯离线桌宠玩腻了，想不想让小狗能连网跟你进行真实的大模型 AI 对话？这就需要我们后面章节的主角：<strong>黄金篇（STM32 HAL库与图形化配置）</strong> 与 <strong>白金篇（ESP32 物联网与端侧网络）</strong>。
+            <p class="text-base text-zinc-700 dark:text-zinc-300 leading-8">
+              如果想继续改善开发流程，或为桌宠加入联网与 AI 对话，可以往后学习<strong>黄金篇（STM32 HAL 库与图形化配置）</strong>和<strong>白金篇（ESP32 物联网与端侧网络）</strong>。先完成本地交互，再逐步加入联网功能。
             </p>
           </div>
         </div>
@@ -319,11 +313,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <!-- 尾声总结与头大图 -->
     <section class="border-t border-zinc-200/80 dark:border-zinc-800/80 pt-8 text-center space-y-6">
       <div class="max-w-xl mx-auto space-y-2">
-        <h3 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
-          是不是感觉头又要开始大了？
+        <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+          一次只解决一个小问题
         </h3>
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-          别慌！只要你把标准库原理吃透，所有单片机底层逻辑全是大差不差的。学会了标准库，后面转 HAL 库就是半天的过渡，转 ESP32 也如探囊取物。只要敢想敢焊，代码跑起来的那一刻，全世界都是你的！
+        <p class="text-base text-zinc-500 dark:text-zinc-400 leading-8">
+          内容不少，卡住很正常。把接线图、遇到的问题和最后的解决办法记下来，下次就有自己的参考。标准库阶段积累的外设与调试经验，也能帮助你继续学习 HAL 库和 ESP32；换平台时仍要重新核对手册与接口。慢慢做，作品会一点点成形。
         </p>
       </div>
 
@@ -336,4 +330,3 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </section>
   </article>
 </BaseLayout>
-

@@ -101,7 +101,6 @@ export const sidebarItems: MenuItem[] = [
     id: 'sponsor',
     title: '无偿赞助',
     icon: 'heart',
-    href: '/sponsor'
+    // 赞助通道尚未开放，避免跳转到不存在的页面。
   }
 ];
-

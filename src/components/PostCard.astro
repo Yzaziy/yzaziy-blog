@@ -3,39 +3,30 @@ interface Props {
   title: string;
   description?: string;
   pubDate: Date;
+  updatedDate?: Date;
+  tags?: string[];
   slug: string;
   href?: string;
 }
 
-const { title, description, pubDate, slug, href } = Astro.props;
-const formattedDate = pubDate.toLocaleDateString('zh-CN', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const { title, description, pubDate, updatedDate, tags = [], slug, href } = Astro.props;
+const date = updatedDate || pubDate;
+const formattedDate = date.toLocaleDateString('zh-CN', {
+  year: 'numeric', month: '2-digit', day: '2-digit',
+}).replaceAll('/', '.');
 const linkUrl = href || `/blog/${slug}`;
 ---
 
-<article class="group relative flex flex-col items-start p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 hover:border-zinc-400/80 dark:hover:border-zinc-600/80 transition bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md shadow-sm hover:shadow-md">
-  <time datetime={pubDate.toISOString()} class="text-xs text-zinc-500 dark:text-zinc-400">
-    {formattedDate}
-  </time>
-  <h2 class="mt-2 text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-    <a href={linkUrl}>
-      <span class="absolute -inset-y-px -inset-x-4 sm:-inset-x-6 sm:rounded-2xl"></span>
-      {title}
-    </a>
-  </h2>
-  {description && (
-    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
-      {description}
-    </p>
-  )}
-  <div class="mt-4 flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400">
-    阅读全文
-    <svg class="ml-1 w-4 h-4 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-    </svg>
+<article class="post-row">
+  <div class="post-meta">
+    <span>{tags.slice(0, 2).join(' · ') || '随笔'}</span>
+    <time datetime={date.toISOString()}>{updatedDate ? '更新于 ' : ''}{formattedDate}</time>
   </div>
+  <h3 class="post-title">
+    <a href={linkUrl} class="post-link">{title}</a>
+  </h3>
+  {description && <p class="post-description">{description}</p>}
+  <svg class="post-arrow" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M5 12h14m-6-6 6 6-6 6" />
+  </svg>
 </article>
-
