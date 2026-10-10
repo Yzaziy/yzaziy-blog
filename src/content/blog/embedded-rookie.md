@@ -2,7 +2,7 @@
 title: "【菜鸟篇】电脑选型与开发工具准备"
 description: "从开发任务、系统兼容性和预算出发，选择适合学习嵌入式的电脑，并按需准备常用软件。"
 pubDate: 2026-09-22
-updatedDate: 2026-10-03
+updatedDate: 2026-10-10
 tags: ["嵌入式入门", "菜鸟", "电脑选型", "必备工具"]
 customUrl: "/embedded/rookie"
 ---
