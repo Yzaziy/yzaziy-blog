@@ -2,7 +2,7 @@
 title: "【青铜篇】C 语言基础与开发工具选择"
 description: "区分编辑器、IDE 与编译器，选择适合课程的 C 语言开发环境，并用流程控制、函数和指针练习检验学习进度。"
 pubDate: 2026-09-22
-updatedDate: 2026-10-03
+updatedDate: 2026-10-10
 tags: ["嵌入式入门", "青铜", "C语言", "编译器"]
 customUrl: "/embedded/bronze"
 ---

@@ -15,6 +15,12 @@ const pages = htmlFiles(root);
 let checkedLinks = 0;
 for (const file of pages) {
   const html = readFileSync(file, 'utf8');
+  for (const link of html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)) {
+    const label = link[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    if (/href="https?:\/\//.test(link[0]) && /访问官网|官网下载|前往官网|下载说明|CMake 命令说明|HAL 官方手册|Windows 安全中心说明|波特律动串口助手/.test(label)) {
+      assert.ok(/class="[^"]*\bofficial-link-button\b/.test(link[0]), `${relative(root, file)} 的官网或资料入口缺少按钮：${label.trim()}`);
+    }
+  }
   const pageUrl = new URL(relative(root, file).replaceAll('\\', '/').replace(/index\.html$/, ''), 'https://yzaziy.cn/');
   for (const tag of html.matchAll(/<(?:a|img|script|link|source|video)\b[^>]*>/g)) {
     const value = tag[0].match(/\b(?:href|src)="([^"]+)"/)?.[1];

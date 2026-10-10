@@ -118,7 +118,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <span>开始实验前，先检查这几件事</span>
         </h3>
         <ul class="text-base text-zinc-700 dark:text-zinc-300 space-y-2 list-disc list-inside leading-8">
-          <li><strong>版本与来源</strong>：先核对课程使用的 MDK、芯片包和库版本，从官网获取安装程序。安装被拦截时查看安全软件的提示与保护历史，<strong>不要为了安装而关闭全部防护或防火墙</strong>。可参考<a href="https://support.microsoft.com/en-us/windows/security/threat-malware-protection/virus-and-threat-protection-in-the-windows-security-app" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Windows 安全中心说明</a>。</li>
+          <li><strong>版本与来源</strong>：先核对课程使用的 MDK、芯片包和库版本，从官网获取安装程序。安装被拦截时查看安全软件的提示与保护历史，<strong>不要为了安装而关闭全部防护或防火墙</strong>。可参考<a href="https://support.microsoft.com/en-us/windows/security/threat-malware-protection/virus-and-threat-protection-in-the-windows-security-app" target="_blank" rel="noopener noreferrer" class="official-link-button mt-3 align-middle">Windows 安全中心说明 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>。</li>
           <li><strong>通电前检查</strong>：核对电源、地线、模块电压和杜邦线顺序。接反电源可能损坏器件；改接线前先断电。</li>
           <li><strong>接触是否可靠</strong>：松动的杜邦线会让实验时好时坏。先检查插头，再换一根可靠的线；面包板上也可以使用套件里的硬插线。</li>
           <li><strong>排查顺序</strong>：如果自己的程序没有预期效果，可先下载与当前板子匹配的课程 hex 固件作对照。若仍无法运行，优先检查供电、接线和下载器连接。</li>
@@ -196,7 +196,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <img src="/embedded/silver/image5.png" alt="嘉立创EDA" class="w-7 h-7 object-contain" />
               <div>
                 <div class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">嘉立创 EDA 专业版</div>
-                <div class="text-sm text-zinc-500 dark:text-zinc-400">前往官网下载安装 ↗</div>
+                <span class="official-link-button mt-2">前往官网下载安装 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></span>
               </div>
             </div>
           </a>
@@ -258,10 +258,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               href="https://serial.keysking.com/"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-sm text-emerald-600 dark:text-emerald-400 font-medium hover:underline"
-            >
-              波特律动串口助手 ↗
-            </a>
+              class="official-link-button mt-3 align-middle"
+            >波特律动串口助手 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>
           </div>
           <p class="text-base text-zinc-500 dark:text-zinc-400">
             可以增加 HC-05 或 JDY-31 蓝牙模块，尝试把有线控制改成手机蓝牙遥控。先核对模块的接线、供电及手机端兼容性；电脑端调试可使用波特律动串口助手，手机端选择与模块匹配的蓝牙串口应用。

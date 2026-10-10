@@ -66,10 +66,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             href="https://www.st.com/zh/development-tools/stm32cubemx.html"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-full py-2 px-3 text-sm font-semibold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
-          >
-            官网下载 ↗
-          </a>
+            class="official-link-button w-full"
+          >官网下载 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>
         </div>
 
         <!-- VS Code -->
@@ -92,10 +90,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             href="https://code.visualstudio.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-full py-2 px-3 text-sm font-semibold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
-          >
-            官网下载 ↗
-          </a>
+            class="official-link-button w-full"
+          >官网下载 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>
         </div>
 
         <!-- CMake -->
@@ -118,10 +114,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             href="https://cmake.org/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-full py-2 px-3 text-sm font-semibold rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
-          >
-            官网下载 ↗
-          </a>
+            class="official-link-button w-full"
+          >官网下载 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>
         </div>
       </div>
 
@@ -132,7 +126,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <p class="leading-8">
           可以使用默认安装路径（如 <code>C:\Program Files\CMake</code>），并选择将 CMake 加入 PATH。安装后重新打开 VS Code 和终端，运行 <code>cmake --version</code>；看到版本号后再继续配置工程。<br />
-          默认路径本身就带空格，不必因此修改安装位置。如果命令无法找到，先检查 PATH；若脚本报路径错误，再核对路径引用与教程中的配置。<a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#view-help" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">CMake 命令说明 ↗</a>
+          默认路径本身就带空格，不必因此修改安装位置。如果命令无法找到，先检查 PATH；若脚本报路径错误，再核对路径引用与教程中的配置。<a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#view-help" target="_blank" rel="noopener noreferrer" class="official-link-button mt-3 align-middle">CMake 命令说明 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>
         </p>
       </div>
 
@@ -230,7 +224,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </h3>
         <p class="text-base text-zinc-600 dark:text-zinc-400 leading-8">
           HAL 是硬件抽象层。对于同一块 STM32，GPIO 电平、定时器计数和串口时序这些硬件原理不会因为换了库而改变，白银篇的基础可以继续用。<br /><br />
-          但迁移<strong>不只是给函数加上 <code>HAL_</code> 前缀</strong>。例如，标准库里设置 GPIO 的 <code>GPIO_WriteBit</code>，在 HAL 中可以对照 <code>HAL_GPIO_WritePin</code> 学习；其他外设还会涉及句柄、状态、回调，以及轮询、中断或 DMA 等不同工作方式。对照一份熟悉的例程，逐项查看初始化、启动和数据处理流程，比只记函数名更有用。<a href="https://www.st.com/resource/en/user_manual/um1850-description-of-stm32f1-hal-and-lowlayer-drivers-stmicroelectronics.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">STM32F1 HAL 官方手册 ↗</a>
+          但迁移<strong>不只是给函数加上 <code>HAL_</code> 前缀</strong>。例如，标准库里设置 GPIO 的 <code>GPIO_WriteBit</code>，在 HAL 中可以对照 <code>HAL_GPIO_WritePin</code> 学习；其他外设还会涉及句柄、状态、回调，以及轮询、中断或 DMA 等不同工作方式。对照一份熟悉的例程，逐项查看初始化、启动和数据处理流程，比只记函数名更有用。<a href="https://www.st.com/resource/en/user_manual/um1850-description-of-stm32f1-hal-and-lowlayer-drivers-stmicroelectronics.pdf" target="_blank" rel="noopener noreferrer" class="official-link-button mt-3 align-middle">STM32F1 HAL 官方手册 <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg></a>
         </p>
 
         <!-- 课程推荐卡片 -->

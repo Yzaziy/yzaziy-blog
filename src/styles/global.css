@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .official-link-button {
+    @apply inline-flex min-h-11 max-w-full items-center justify-center gap-2 shrink-0 rounded-lg border px-4 py-2 text-sm font-semibold text-center transition-opacity;
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--canvas);
+  }
+  .official-link-button:hover, .group:hover > .official-link-button { opacity: 0.9; }
+  .official-link-button:active, .group:active > .official-link-button { opacity: 0.8; }
+}
+
 @layer base {
   :root {
     --header-height: 64px;
