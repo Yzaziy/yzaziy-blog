@@ -1,0 +1,13 @@
+name = "yzaziy-blog"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-21"
+send_metrics = false
+
+[[d1_databases]]
+binding = "VISITS_DB"
+database_name = "yzaziy-visits"
+database_id = "41171af1-0d09-4908-9b1e-c91379c96f50"
+
+# Preview deployments must not write to the production counter.
+[env.preview]
+d1_databases = []

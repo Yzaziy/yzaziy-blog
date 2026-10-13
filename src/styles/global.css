@@ -67,6 +67,9 @@
 .dark .site-backdrop { background: rgba(15, 22, 18, 0.89); }
 .site-header { position: sticky; top: 0; z-index: 40; background: var(--nav-surface); border-bottom: 1px solid var(--line); }
 .header-inner { height: var(--header-height); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-brand-group { display: flex; align-items: center; gap: 24px; }
+.site-visit-counter { display: inline-flex; align-items: baseline; gap: 6px; font-size: 12px; color: var(--secondary); white-space: nowrap; font-variant-numeric: tabular-nums; }
+#site-visit-value { color: var(--foreground); }
 .header-actions, .header-nav { display: flex; align-items: center; gap: 12px; }
 .header-nav { gap: 24px; margin-right: 8px; }
 .header-nav-link { font-size: 14px; color: var(--secondary); padding-block: 8px; white-space: nowrap; }
@@ -180,6 +183,8 @@
 @media (min-width: 1400px) { .stage-list { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; } }
 @media (max-width: 767px) {
   .header-inner { padding-inline: 14px; gap: 8px; }
+  .header-brand-group { flex-direction: column; align-items: flex-start; gap: 1px; }
+  .site-visit-counter { font-size: 11px; gap: 4px; }
   .header-actions { gap: 3px; }
   .header-nav { gap: 14px; margin-right: 4px; }
   .header-nav-link { font-size: 13px; }

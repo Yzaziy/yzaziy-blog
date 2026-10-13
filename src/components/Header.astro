@@ -22,16 +22,22 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-      <a href="/" class="flex items-center gap-3 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-80 transition">
-        <img
-          src="/avatar-v2.jpg"
-          alt="Yzaziy"
-          class="w-9 h-9 rounded-full object-cover"
-          width="36"
-          height="36"
-        />
-        <span>Yzaziy</span>
-      </a>
+      <div class="header-brand-group">
+        <a href="/" class="flex items-center gap-3 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-80 transition">
+          <img
+            src="/avatar-v2.jpg"
+            alt="Yzaziy"
+            class="w-9 h-9 rounded-full object-cover"
+            width="36"
+            height="36"
+          />
+          <span>Yzaziy</span>
+        </a>
+        <span class="site-visit-counter" aria-live="polite" aria-atomic="true" title="打开或刷新网站记一次；站内切换不重复计数，不保存 IP。">
+          <span>总访问量</span>
+          <span id="site-visit-value">统计中…</span>
+        </span>
+      </div>
     </div>
     <div class="header-actions">
       <nav class="header-nav" aria-label="主导航">
@@ -53,3 +59,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     </div>
   </div>
 </header>
+
+<script>
+  import '../scripts/visit-counter.js';
+</script>

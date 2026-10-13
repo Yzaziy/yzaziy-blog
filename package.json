@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "check": "npm run build && node scripts/check-site.mjs",
+    "check": "npm run build && node scripts/check-site.mjs && npm test",
+    "test": "node --disable-warning=ExperimentalWarning --test scripts/*.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
