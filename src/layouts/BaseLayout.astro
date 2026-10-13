@@ -43,6 +43,9 @@ const { title, description = 'Yzaziy 的学习与开发笔记' } = Astro.props;
     </div>
 
     <Header />
+    <div id="site-visit-verification" transition:persist="site-visit-verification" class="fixed bottom-4 right-4 z-[60]" aria-label="访问计数安全验证">
+      <div id="site-visit-widget"></div>
+    </div>
     <aside id="sidebar-desktop-container" class="desktop-sidebar" transition:persist="sidebar-desktop">
       <Sidebar />
     </aside>
