@@ -8,12 +8,6 @@ const posts = (await getCollection('blog')).sort((a, b) =>
   || (b.data.updatedDate || b.data.pubDate).valueOf() - (a.data.updatedDate || a.data.pubDate).valueOf()
   || a.slug.localeCompare(b.slug)
 );
-const stages = [
-  { title: '菜鸟', description: '准备电脑与工具', href: '/embedded/rookie', badge: '/ranks/rookie.png' },
-  { title: '青铜', description: '打好 C 语言基础', href: '/embedded/bronze', badge: '/ranks/bronze.png' },
-  { title: '白银', description: '用标准库认识 STM32', href: '/embedded/silver', badge: '/ranks/silver.png' },
-  { title: '黄金', description: '上手 HAL 库与新工具', href: '/embedded/gold', badge: '/ranks/gold.png' },
-];
 ---
 
 <BaseLayout title="Yzaziy · 学习与开发笔记" description="记录嵌入式学习、开发实践和日常折腾。从电脑准备、C 语言到 STM32，一步一步把想法做成作品。">
@@ -25,22 +19,17 @@ const stages = [
     </a>
   </section>
 
-  <section class="learning-path" aria-labelledby="learning-title">
+  <section class="social-accounts" aria-labelledby="social-title">
     <div class="section-heading">
-      <h2 id="learning-title">嵌入式入门路线</h2>
-      <span>从准备工具，到动手实践</span>
+      <h2 id="social-title">社交账号</h2>
     </div>
-    <ol class="stage-list">
-      {stages.map((stage) => (
-        <li>
-          <a href={stage.href} class="stage-link">
-            <img src={stage.badge} width="30" height="30" alt="" />
-            <div><span class="stage-title">{stage.title}</span><span class="stage-description">{stage.description}</span></div>
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="m9 5 7 7-7 7" /></svg>
-          </a>
-        </li>
-      ))}
-    </ol>
+    <ul class="social-list">
+      <li><span class="social-platform">B站</span><span class="social-handle">Yzaziy</span></li>
+      <li><span class="social-platform">抖音</span><span class="social-handle">54011739097</span></li>
+      <li><span class="social-platform">X</span><span class="social-handle">YzaziyK</span></li>
+      <li><span class="social-platform">TikTok</span><span class="social-handle">zaziy.y</span></li>
+      <li><span class="social-platform">YouTube</span><span class="social-handle">@zaziyY-h3t4l</span></li>
+    </ul>
   </section>
 
   <section class="latest-posts" aria-labelledby="latest-title">

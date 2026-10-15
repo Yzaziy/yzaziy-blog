@@ -127,15 +127,11 @@
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
 .section-heading h2 { font-size: 20px; line-height: 1.5; font-weight: 600; letter-spacing: -0.025em; }
 .section-heading > span { color: var(--muted); font-size: 12.5px; }
-.learning-path { padding-block: 24px 22px; border-top: 1px solid var(--line); margin-bottom: 24px; }
-.stage-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 24px; }
-.stage-link { display: flex; gap: 13px; align-items: center; min-height: 64px; padding-block: 10px; }
-.stage-link img { width: 30px; height: 30px; object-fit: contain; }
-.stage-link > div { flex: 1; min-width: 0; }
-.stage-link > svg { color: var(--muted); flex-shrink: 0; }
-.stage-title { display: block; font-weight: 600; font-size: 15px; }
-.stage-description { display: block; margin-top: 4px; font-size: 13px; color: var(--secondary); }
-.stage-link:hover .stage-title, .stage-link:hover > svg { color: var(--accent); }
+.social-accounts { padding-block: 24px 22px; border-top: 1px solid var(--line); margin-bottom: 24px; }
+.social-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px 24px; }
+.social-list li { display: flex; flex-direction: column; gap: 4px; min-width: 0; min-height: 64px; padding-block: 10px; }
+.social-platform { font-size: 15px; font-weight: 600; }
+.social-handle { color: var(--secondary); font-size: 13px; overflow-wrap: anywhere; }
 .latest-posts { padding: 26px 32px 6px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; }
 .latest-posts .section-heading { margin-bottom: 4px; }
 .post-row { position: relative; padding: 24px 36px 26px 0; border-top: 1px solid var(--line); }
@@ -180,7 +176,6 @@
   .desktop-sidebar { display: flex; }
   .site-content { padding-left: var(--sidebar-width); }
 }
-@media (min-width: 1400px) { .stage-list { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; } }
 @media (max-width: 767px) {
   .header-inner { padding-inline: 14px; gap: 8px; }
   .header-brand-group { flex-direction: column; align-items: flex-start; gap: 1px; }
@@ -194,11 +189,8 @@
   .home-intro p { font-size: 16px; margin-top: 14px; }
   .section-heading { gap: 12px; }
   .section-heading h2 { font-size: 18px; }
-  .learning-path .section-heading { display: block; }
-  .learning-path .section-heading > span { display: block; margin-top: 5px; }
-  .stage-list { gap: 4px 14px; }
-  .stage-link { gap: 9px; }
-  .stage-description { font-size: 12px; }
+  .social-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 14px; }
+  .social-list li { min-height: 56px; }
   .latest-posts { padding: 20px 20px 2px; }
   .post-row { padding-block: 20px; padding-right: 25px; }
   .post-meta { font-size: 11px; gap: 5px 8px; }
@@ -215,7 +207,6 @@
   .header-inner > div:first-child { gap: 4px; }
   .header-inner a.text-xl { font-size: 17px; gap: 7px; }
   .page-content { padding-inline: 12px; }
-  .stage-link > svg { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
