@@ -10,3 +10,6 @@
 - 样式：Tailwind CSS，严格适配浅色 (Light) 与深色 (Dark) 主题。
 - 侧边栏：多级层级结构统一由 `src/data/sidebar.ts` 驱动。
 
+
+## 发布流程
+- 完成修改并通过 `npm run check` 后，直接提交、推送并快进合并到 `main`（正式站随之自动部署），无需另行征求同意，也不需要开 PR。
