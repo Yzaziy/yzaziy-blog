@@ -101,7 +101,6 @@
 .sidebar-rank-row { padding: 9px 10px; min-height: 44px; font-size: 14.5px; color: var(--secondary); }
 .sidebar-rank-row > .sidebar-chevron { margin-left: 0; }
 .sidebar-rank-row > span { flex: 1; }
-a.sidebar-rank-row { padding-left: 27px; }
 a.sidebar-rank-row[aria-current="page"] { color: var(--foreground); font-weight: 600; background: var(--accent-soft); }
 .rank-icon { width: 26px; height: 26px; object-fit: contain; flex-shrink: 0; }
 .sidebar-rank[data-current] > .sidebar-rank-row { color: var(--foreground); font-weight: 600; }

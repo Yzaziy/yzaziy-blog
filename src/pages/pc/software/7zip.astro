@@ -1,0 +1,32 @@
+---
+import SoftwarePage from '../../../layouts/SoftwarePage.astro';
+---
+
+<SoftwarePage
+  name="7-Zip"
+  tagline="开源压缩 / 解压软件 · Windows"
+  description="7-Zip 是开源免费的压缩解压软件，支持 7z、ZIP、RAR、ISO 等常见格式，可加密压缩，附官网下载入口与安装提示。"
+  icon="/pc/software/7zip.png"
+  pixelated
+  updated="2026-11-09"
+  updatedLabel="2026 年 11 月 9 日"
+  downloadUrl="https://www.7-zip.org/download.html"
+>
+  <Fragment slot="intro">
+    体积只有几 MB 的老牌压缩软件，开源免费、没有广告和弹窗。下载的工程资料、驱动包和镜像文件，基本都能用它打开。
+  </Fragment>
+
+  <section class="space-y-3">
+    <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">它能做什么</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>解压常见格式：</strong>7z、ZIP、RAR、TAR、GZ、ISO 等压缩包和镜像都能直接解开。</li>
+      <li><strong>高压缩率打包：</strong>自家的 7z 格式压缩率高，适合打包体积较大的工程或资料备份。</li>
+      <li><strong>加密压缩：</strong>7z 和 ZIP 格式支持设置密码，7z 使用 AES-256 加密，还可以选择同时隐藏文件名。</li>
+      <li><strong>右键菜单：</strong>安装后在文件上点右键，就能直接“解压到当前文件夹”或“添加到压缩包”。</li>
+    </ul>
+  </section>
+
+  <aside class="software-tip">
+    <p><strong>下载提示：</strong>官网下载页第一行通常就是最新正式版，64 位 Windows 选 <code>x64</code> 的 <code>.exe</code> 即可。安装后在“工具 → 选项 → 语言”里切换为简体中文。请认准官网域名 <code>7-zip.org</code>，网上有不少仿冒站点。</p>
+  </aside>
+</SoftwarePage>

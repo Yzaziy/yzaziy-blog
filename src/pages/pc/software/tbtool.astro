@@ -1,0 +1,33 @@
+---
+import SoftwarePage from '../../../layouts/SoftwarePage.astro';
+---
+
+<SoftwarePage
+  name="图吧工具箱"
+  tagline="硬件检测工具合集 · Windows"
+  description="图吧工具箱是免费的硬件检测工具合集，集成 CPU-Z、AIDA64、CrystalDiskInfo、FurMark 等工具，可查看配置、检测硬盘、烤机和验机，附官网下载入口与使用提示。"
+  icon="/pc/software/tbtool.png"
+  updated="2026-11-09"
+  updatedLabel="2026 年 11 月 9 日"
+  downloadUrl="https://www.tbtool.cn/download/index.html"
+>
+  <Fragment slot="intro">
+    由百度贴吧“图拉丁吧”社区整理维护的免费工具合集。它本身是一个启动器，把上百款常用的硬件检测、测试和维护软件按类别放在一起，解压就能用，不必一个个去找下载。
+  </Fragment>
+
+  <section class="space-y-3">
+    <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">它能做什么</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>查看电脑配置：</strong>用 CPU-Z、GPU-Z、AIDA64、HWiNFO 查看处理器、显卡、主板和内存的具体型号与参数。</li>
+      <li><strong>检查硬盘：</strong>CrystalDiskInfo 查看硬盘健康度、通电时间和写入量，CrystalDiskMark 测试读写速度，H2testw 检测 U 盘是否扩容。</li>
+      <li><strong>烤机与稳定性测试：</strong>FurMark、Prime95 等工具可以测试散热和满载稳定性，适合装机或升级后检查。</li>
+      <li><strong>监控温度与电池：</strong>实时查看硬件温度和频率，笔记本还能查看电池损耗。</li>
+      <li><strong>二手验机：</strong>买二手电脑或配件时，可以用它核对配置是否与卖家描述一致。</li>
+    </ul>
+    <p>工具箱自带“新手指引”文件夹，里面有查看温度、检测硬盘、烤机等操作的演示视频，第一次用可以先看看。</p>
+  </section>
+
+  <aside class="software-tip">
+    <p><strong>使用提示：</strong>烤机会让硬件长时间满载，测试时盯着温度，发现异常就立即停止，笔记本请插上电源。工具箱里也有游戏平台、加速器等第三方入口，按需使用即可。完整包约 200 MB，官网提供安装版和绿色版，绿色版需要登录后下载。</p>
+  </aside>
+</SoftwarePage>

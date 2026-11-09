@@ -1,0 +1,85 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  name: string;
+  tagline: string;
+  description: string;
+  icon: string;
+  pixelated?: boolean;
+  updated: string;
+  updatedLabel: string;
+  downloadUrl: string;
+}
+
+const { name, tagline, description, icon, pixelated = false, updated, updatedLabel, downloadUrl } = Astro.props;
+---
+
+<BaseLayout title={`${name} · 软件推荐 | 电脑知识`} description={description}>
+  <article class="tutorial max-w-3xl mx-auto space-y-10 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+    <nav class="breadcrumbs flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400" aria-label="面包屑">
+      <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
+      <span aria-hidden="true">/</span>
+      <span>电脑知识</span>
+      <span aria-hidden="true">/</span>
+      <span>软件推荐</span>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page" class="text-zinc-900 dark:text-zinc-100">{name}</span>
+    </nav>
+
+    <header class="article-header border-b border-zinc-200 dark:border-zinc-800 pb-8">
+      <div class="flex items-center gap-4">
+        <div class="software-icon">
+          <img src={icon} alt="" width="48" height="48" class:list={[{ 'software-icon-pixel': pixelated }]} />
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-zinc-900 dark:text-zinc-100">{name}</h1>
+          <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{tagline}</p>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <span>电脑知识 · 软件推荐</span>
+        <span>更新于 <time datetime={updated}>{updatedLabel}</time></span>
+      </div>
+      <p class="mt-6 text-base sm:text-lg leading-8"><slot name="intro" /></p>
+    </header>
+
+    <slot />
+
+    <div class="flex flex-wrap gap-3">
+      <a href={downloadUrl} target="_blank" rel="noopener noreferrer" class="official-link-button">
+        官网下载
+        <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" /></svg>
+      </a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .software-icon {
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: #fff;
+  }
+  .software-icon img { width: 48px; height: 48px; object-fit: contain; }
+  .software-icon-pixel { image-rendering: pixelated; }
+  article :global(.software-tip) {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--accent-soft);
+    color: var(--foreground);
+    line-height: 1.8;
+  }
+  article :global(.software-tip code) {
+    font-size: 0.875em;
+    padding: 0.1em 0.35em;
+    border-radius: 0.3em;
+    background: var(--paper);
+  }
+</style>
