@@ -93,6 +93,7 @@ export const sidebarItems: MenuItem[] = [
     title: '电脑知识',
     icon: 'monitor',
     children: [
+      { id: 'pc-software', title: '软件推荐', href: '/pc/software' },
       { id: 'pc-hardware', title: '装机与硬件科普', href: '#' },
       { id: 'pc-efficiency', title: '实用生产力工具', href: '#' }
     ]

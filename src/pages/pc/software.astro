@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const externalIcon = 'M7 17 17 7M7 7h10v10';
+---
+
+<BaseLayout
+  title="软件推荐：7-Zip 与图吧工具箱 | 电脑知识"
+  description="两款装机后常用的免费软件：7-Zip 负责压缩与解压，图吧工具箱集合了硬件检测、烤机和硬盘测试工具。附官网下载入口与使用提醒。"
+>
+  <article class="tutorial max-w-3xl mx-auto space-y-12 text-base leading-8 text-zinc-700 dark:text-zinc-300">
+    <nav class="breadcrumbs flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400" aria-label="面包屑">
+      <a href="/" class="hover:text-zinc-900 dark:hover:text-zinc-100 transition">首页</a>
+      <span aria-hidden="true">/</span>
+      <span>电脑知识</span>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page" class="text-zinc-900 dark:text-zinc-100">软件推荐</span>
+    </nav>
+
+    <header class="article-header border-b border-zinc-200 dark:border-zinc-800 pb-8">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-zinc-900 dark:text-zinc-100">
+        软件推荐
+      </h1>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <span>电脑知识 · 实用工具</span>
+        <span>更新于 <time datetime="2026-11-09">2026 年 11 月 9 日</time></span>
+      </div>
+      <p class="mt-6 text-base sm:text-lg leading-8">
+        这里收集我自己装机后会先装上的软件。每款都写明它能解决什么问题、去哪里下载，以及使用时要注意的地方。都是免费软件，请从官网下载，避开捆绑了其他程序的“高速下载器”。
+      </p>
+    </header>
+
+    <!-- 7-Zip -->
+    <section id="7zip" class="software-card">
+      <div class="flex items-center gap-4">
+        <div class="software-icon">
+          <img src="/pc/software/7zip.png" alt="" width="48" height="48" class="software-icon-pixel" />
+        </div>
+        <div class="min-w-0">
+          <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">7-Zip</h2>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">开源压缩 / 解压软件 · Windows</p>
+        </div>
+      </div>
+
+      <p>
+        体积只有几 MB 的老牌压缩软件，开源免费、没有广告和弹窗。下载的工程资料、驱动包和镜像文件，基本都能用它打开。
+      </p>
+
+      <div class="space-y-2">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">它能做什么</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>解压常见格式：</strong>7z、ZIP、RAR、TAR、GZ、ISO 等压缩包和镜像都能直接解开。</li>
+          <li><strong>高压缩率打包：</strong>自家的 7z 格式压缩率高，适合打包体积较大的工程或资料备份。</li>
+          <li><strong>加密压缩：</strong>7z 和 ZIP 格式支持设置密码，7z 使用 AES-256 加密，还可以选择同时隐藏文件名。</li>
+          <li><strong>右键菜单：</strong>安装后在文件上点右键，就能直接“解压到当前文件夹”或“添加到压缩包”。</li>
+        </ul>
+      </div>
+
+      <aside class="software-tip">
+        <p><strong>下载提示：</strong>官网下载页第一行通常就是最新正式版，64 位 Windows 选 <code>x64</code> 的 <code>.exe</code> 即可。安装后在“工具 → 选项 → 语言”里切换为简体中文。请认准官网域名 <code>7-zip.org</code>，网上有不少仿冒站点。</p>
+      </aside>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="https://www.7-zip.org/download.html" target="_blank" rel="noopener noreferrer" class="official-link-button">
+          官网下载
+          <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={externalIcon} /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- 图吧工具箱 -->
+    <section id="tbtool" class="software-card">
+      <div class="flex items-center gap-4">
+        <div class="software-icon">
+          <img src="/pc/software/tbtool.png" alt="" width="48" height="48" />
+        </div>
+        <div class="min-w-0">
+          <h2 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">图吧工具箱</h2>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">硬件检测工具合集 · Windows</p>
+        </div>
+      </div>
+
+      <p>
+        由百度贴吧“图拉丁吧”社区整理维护的免费工具合集。它本身是一个启动器，把上百款常用的硬件检测、测试和维护软件按类别放在一起，解压就能用，不必一个个去找下载。
+      </p>
+
+      <div class="space-y-2">
+        <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">它能做什么</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>查看电脑配置：</strong>用 CPU-Z、GPU-Z、AIDA64、HWiNFO 查看处理器、显卡、主板和内存的具体型号与参数。</li>
+          <li><strong>检查硬盘：</strong>CrystalDiskInfo 查看硬盘健康度、通电时间和写入量，CrystalDiskMark 测试读写速度，H2testw 检测 U 盘是否扩容。</li>
+          <li><strong>烤机与稳定性测试：</strong>FurMark、Prime95 等工具可以测试散热和满载稳定性，适合装机或升级后检查。</li>
+          <li><strong>监控温度与电池：</strong>实时查看硬件温度和频率，笔记本还能查看电池损耗。</li>
+          <li><strong>二手验机：</strong>买二手电脑或配件时，可以用它核对配置是否与卖家描述一致。</li>
+        </ul>
+        <p>工具箱自带“新手指引”文件夹，里面有查看温度、检测硬盘、烤机等操作的演示视频，第一次用可以先看看。</p>
+      </div>
+
+      <aside class="software-tip">
+        <p><strong>使用提示：</strong>烤机会让硬件长时间满载，测试时盯着温度，发现异常就立即停止，笔记本请插上电源。工具箱里也有游戏平台、加速器等第三方入口，按需使用即可。完整包约 200 MB，官网提供安装版和绿色版，绿色版需要登录后下载。</p>
+      </aside>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="https://www.tbtool.cn/download/index.html" target="_blank" rel="noopener noreferrer" class="official-link-button">
+          官网下载
+          <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={externalIcon} /></svg>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .software-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--paper);
+  }
+  @media (min-width: 640px) {
+    .software-card { padding: 2rem; }
+  }
+  .software-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    border: 1px solid var(--line);
+    border-radius: 0.875rem;
+    background: #fff;
+  }
+  .software-icon img { width: 48px; height: 48px; object-fit: contain; }
+  .software-icon-pixel { image-rendering: pixelated; }
+  .software-tip {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--accent-soft);
+    color: var(--foreground);
+    line-height: 1.8;
+  }
+  .software-tip code {
+    font-size: 0.875em;
+    padding: 0.1em 0.35em;
+    border-radius: 0.3em;
+    background: var(--paper);
+  }
+</style>
